@@ -7,7 +7,7 @@ import { Login } from './pages/Login/Login'
 function App() {
 
   return (
-    <BrowserRouter basename='/'>    
+    <BrowserRouter basename='/frontend-soft/'>    
       <Routes>
         <Route path='/' element={<Home />}/>
         <Route path='/login' element={<Login />}/>
