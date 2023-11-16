@@ -2,8 +2,9 @@ import { Box, IconButton } from "@mui/material"
 import { useTheme } from '@mui/material/styles';
 import MenuIcon from '@mui/icons-material/Menu';
 
+interface headerProps {}
 
-export const Header = () => {
+export const Header: React.FC<headerProps> = () => {
     const theme = useTheme()
     return(
         <Box 

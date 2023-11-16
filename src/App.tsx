@@ -15,7 +15,7 @@ function App() {
   return (
     <BrowserRouter basename='/frontend-soft/'>    
       <Header/>
-      <Container >
+      <Container sx={{height: "100%"}}>
         <Routes>
           <Route path='/' element={<Home />}/>
           <Route path='/login' element={<Login />}/>

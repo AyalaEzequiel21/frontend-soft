@@ -1,9 +1,9 @@
 import { Box } from "@mui/material"
 import { useTheme } from '@mui/material/styles';
-// import MenuIcon from '@mui/icons-material/Menu';
 
+interface footerProps {}
 
-export const Footer = () => {
+export const Footer: React.FC<footerProps> = () => {
     const theme = useTheme()
     return(
         <Box 
