@@ -15,13 +15,13 @@ function App() {
   return (
     <BrowserRouter basename='/frontend-soft/'>    
       <Header/>
-      <Container sx={{height: "100%"}}>
+      {/* <Container sx={{height: "100%"}}> */}
         <Routes>
-          <Route path='/' element={<Home />}/>
           <Route path='/login' element={<Login />}/>
+          <Route path='/' element={<Home />}/>
           <Route path='*' element={<Login />}/>
         </Routes>
-      </Container>
+      {/* </Container> */}
       <Footer/>
     </BrowserRouter>
   )
