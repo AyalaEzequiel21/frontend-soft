@@ -34,7 +34,7 @@ export const LoginForm: React.FC<loginFormProps> = () => {
     }
 
     return (
-        <form noValidate onSubmit={handleSubmit(onSubmit)}>
+        <form noValidate onSubmit={handleSubmit(onSubmit)} style={{width: '100%', maxWidth: '335px'}}>
             <Typography variant='h6' textAlign={'center'} m={1} sx={{color: theme.palette.primary.main}}>Iniciar Sesión</Typography>
             <Stack spacing={3}>
                 <TextField 

@@ -9,7 +9,6 @@ import { VentasSection } from '../sections/VentasSection';
 import { PagosSection } from '../sections/PagosSection';
 import { ReportesSection } from '../sections/ReportesSection';
 import { ListasSection } from '../sections/ListasSection';
-import { LoginForm } from '../../pages/Login/LoginForm';
 
 
 export const DrawerCustom = () => {
@@ -40,15 +39,14 @@ export const DrawerCustom = () => {
     }
   };
 
-  const fcEx = (data: {user: string, password: string}) => console.log(data)
 
   return (
     <Box sx={{height: "100vh"}}>
       <Grid container spacing={2}>
         {/* Panel de navegación */}
         <Grid item xs={4}>
-          <Drawer variant="permanent" anchor="left" sx={{display: { xs: "none", sm: "block" }, width: "100%"}}>
-            <List sx={{ bgcolor: '#2c3e50', color: '#fff', height: '100vh', width: "300px"}}>
+          <Drawer variant="permanent" anchor="left" sx={{display: { xs: "none", sm: "block" }, width: "100%", height: '100%'}}>
+            <List sx={{ bgcolor: '#2c3e50', color: '#fff', height: '100%', width: "300px"}}>
               <img src={logo} alt="logo" style={{height: '8rem', width: '10rem'}}/>
               {/* Opción de Clientes */}
               {mainList.map(item => <ItemList item={item} setSelected={handleOptionClick}/>)}

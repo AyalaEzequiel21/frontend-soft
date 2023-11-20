@@ -25,9 +25,9 @@ export const Login: React.FC<loginProps> = () => {
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
-                    padding: theme.spacing(8),
-                    marginTop: theme.spacing(5),
-                    marginBottom: theme.spacing(5)
+                    justifyContent: 'center',
+                    padding: theme.spacing(4),
+                    marginTop: theme.spacing(10),
                 }}
             >
                 <img src={logo}  style={{
