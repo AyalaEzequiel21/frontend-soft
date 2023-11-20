@@ -1,65 +1,60 @@
 import { useState } from 'react';
-import { Grid, Drawer, List, Box } from '@mui/material';
-// import { useTheme } from '@mui/material/styles';
+import { Drawer, Box, List } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 import logo from '../../assets/logo.png'
 import { mainList } from '../../utilities/mainList';
 import { ItemList } from '../itemList/ItemList';
-import { ClientesSection } from '../sections/ClientesSection';
-import { VentasSection } from '../sections/VentasSection';
-import { PagosSection } from '../sections/PagosSection';
-import { ReportesSection } from '../sections/ReportesSection';
-import { ListasSection } from '../sections/ListasSection';
+import { CheckMediumScreen } from '../../utilities/utilityFunction/checkMediaQuery';
 
+interface DrawerCustomProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
 
-export const DrawerCustom = () => {
-  const [selectedOption, setSelectedOption] = useState('clientes'); // Opción seleccionada por defecto
+export const DrawerCustom: React.FC<DrawerCustomProps> = ({ isOpen, onClose }) => {
 
-  // const theme = useTheme()
+  const theme = useTheme()
+  const isMediumSize = CheckMediumScreen()
+  const [selected, setSelected] = useState('')
+  const handleSelect = (selection: string) => {
+    setSelected(selection)
+  }
 
-  const handleOptionClick = (option: string) => {
-    setSelectedOption(option);    
-  };
-
-  // Contenido de la sección según la opción seleccionada
-  const renderSection = () => {
-    switch (selectedOption) {
-      case 'clientes':
-        return <ClientesSection />;
-      case 'ventas':
-        return <VentasSection />;
-      case 'pagos':
-        return <PagosSection />;
-      case 'reportes':
-        return <ReportesSection />;
-      case 'listas':
-        return <ListasSection />;
-      // Agrega más casos según tus secciones
-      default:
-        return <>jajaja</>;
-    }
-  };
-
+  const drawerContent = (
+    mainList.map(item => <ItemList item={item} setSelected={handleSelect}/>)
+  )
 
   return (
-    <Box sx={{height: "100vh"}}>
-      <Grid container spacing={2}>
-        {/* Panel de navegación */}
-        <Grid item xs={4}>
-          <Drawer variant="permanent" anchor="left" sx={{display: { xs: "none", sm: "block" }, width: "100%", height: '100%'}}>
-            <List sx={{ bgcolor: '#2c3e50', color: '#fff', height: '100%', width: "300px"}}>
-              <img src={logo} alt="logo" style={{height: '8rem', width: '10rem'}}/>
-              {/* Opción de Clientes */}
-              {mainList.map(item => <ItemList item={item} setSelected={handleOptionClick}/>)}
-            </List>
-          </Drawer>
-        </Grid>
-
-        {/* Contenido de la sección */}
-        <Grid item xs={8}>
-          {renderSection()}
-          {/* <LoginForm/> */}
-        </Grid>
-      </Grid>
-    </Box>
-  );
+    <Drawer 
+      anchor="left"
+      open={isMediumSize ? true : isOpen}
+      onClose={onClose}
+      variant={isMediumSize? "permanent" : "temporary"}
+      sx={{
+        zIndex: 0,
+        height: "100%",
+        '& .MuiDrawer-paper': {
+          backgroundColor: theme.palette.primary.main,
+          marginTop: 8,
+          width: isMediumSize ? 280 : '70%',
+        },
+      }}
+    >
+      <Box 
+        component={'img'}
+        src={logo}
+        alt='Logo'
+        sx={{
+          height: isMediumSize? 170 : 150, 
+          width: isMediumSize? 220 : 200,
+          margin: "0 auto"
+        }}
+      />
+      <List sx={{margin: '0 auto'}}>
+        {drawerContent}
+        {selected}
+      </List>
+    </Drawer>
+  )
 };
+// {mainList.map(item => <ItemList item={item} setSelected={handleOptionClick}/>)}

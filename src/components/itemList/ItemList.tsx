@@ -8,11 +8,13 @@ interface itemListProps {
 
 export const ItemList: React.FC<itemListProps> = ({item, setSelected}) => {
     return (
-        <ListItemButton onClick={() => setSelected(item.value)} sx={{width: '100%'}}>
-            <ListItemIcon sx={{color: '#fff'}}>
-                {item.icon}
-            </ListItemIcon>
-            <ListItemText primary={item.label}/>
+        <ListItemButton onClick={() => setSelected(item.value)}>
+            <ListItemText sx={{color: '#fff'}}>
+                <ListItemIcon sx={{color: '#fff'}}>
+                    {item.icon}
+                </ListItemIcon>
+                {item.label}
+            </ListItemText>
         </ListItemButton>
     )
 }

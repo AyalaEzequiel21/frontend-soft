@@ -9,7 +9,8 @@ export const Footer: React.FC<footerProps> = () => {
         <Box 
         sx={{
             height: 50,
-            backgroundColor: theme.palette.primary.main
+            backgroundColor: theme.palette.primary.main,
+            zIndex: 100
         }}
         component={"footer"}
         >

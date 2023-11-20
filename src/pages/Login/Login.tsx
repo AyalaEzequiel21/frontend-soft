@@ -1,4 +1,4 @@
-import { Paper, Container, CssBaseline } from "@mui/material"
+import { Paper, Container } from "@mui/material"
 import { useTheme } from '@mui/material/styles';
 import logo from '../../assets/logo.png'
 import { LoginForm } from './LoginForm';
@@ -18,7 +18,6 @@ export const Login: React.FC<loginProps> = () => {
             component={'main'}
             maxWidth={containerMaxWidth}
         >
-            <CssBaseline />
             <Paper 
                 elevation={3}
                 sx={{

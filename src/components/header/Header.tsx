@@ -1,28 +1,32 @@
-import { Box, IconButton } from "@mui/material"
+import { AppBar, Toolbar, IconButton } from "@mui/material"
 import { useTheme } from '@mui/material/styles';
 import MenuIcon from '@mui/icons-material/Menu';
 
-interface headerProps {}
+interface headerProps {
+    onClickButton: ()=> void
+}
 
-export const Header: React.FC<headerProps> = () => {
+export const Header: React.FC<headerProps> = ({onClickButton}) => {
     const theme = useTheme()
     return(
-        <Box 
-        sx={{
-            height: 50,
-            backgroundColor: theme.palette.primary.main
-        }}
-        component={"header"}
-        >
-            <IconButton sx={{marginLeft: 1}}>
-                <MenuIcon 
-                sx={{
-                    color: theme.palette.text.secondary,
-                    display: { xs: "block", sm: "none" },
-                    fontSize: "2rem"
-                }}
-                />
-            </IconButton>
-        </Box>
+       <AppBar
+        position="static"
+        sx={{backgroundColor: theme.palette.primary.main, zIndex:100}}
+       >
+            <Toolbar>
+                <IconButton 
+                    edge="start"
+                    color="inherit"
+                    sx={{
+                        marginRight: 1,
+                        display: { xs: "block", sm: "none" },
+                        fontSize: "2rem",
+                    }}
+                    onClick={onClickButton}
+                >
+                    <MenuIcon />
+                </IconButton>
+            </Toolbar>
+       </AppBar>
     )
 }
