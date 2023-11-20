@@ -7,6 +7,7 @@ import { ThemeProvider } from '@emotion/react';
 import theme from './utilities/theme.ts'
 
 
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <CssBaseline />

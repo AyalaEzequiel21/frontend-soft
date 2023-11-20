@@ -3,9 +3,11 @@ import { useTheme } from '@mui/material/styles';
  
 interface buttonFormProps {
     children: React.ReactNode
+    mt: boolean,
+    sizeXL: boolean
 }
 
-export const ButtonForm: React.FC<buttonFormProps> = ({children}) => {
+export const ButtonForm: React.FC<buttonFormProps> = ({children, mt, sizeXL}) => {
     const theme = useTheme()
 
     return (
@@ -14,7 +16,10 @@ export const ButtonForm: React.FC<buttonFormProps> = ({children}) => {
             style={{
                 backgroundColor: theme.palette.primary.main,
                 color: theme.palette.text.secondary,
-                margin: "0 auto"
+                margin: '0 auto',
+                marginTop: mt? 20 : 0,
+                width: sizeXL? '100%' : '150px',
+                padding: "10px"
             }}
         >
             {children}
