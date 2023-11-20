@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Drawer, Box, List } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import logo from '../../assets/logo.png'
@@ -9,17 +8,14 @@ import { CheckMediumScreen } from '../../utilities/utilityFunction/checkMediaQue
 interface DrawerCustomProps {
   isOpen: boolean;
   onClose: () => void;
+  handleSelect: (selection: string) => void
 }
 
-export const DrawerCustom: React.FC<DrawerCustomProps> = ({ isOpen, onClose }) => {
+export const DrawerCustom: React.FC<DrawerCustomProps> = ({ isOpen, onClose, handleSelect }) => {
 
   const theme = useTheme()
   const isMediumSize = CheckMediumScreen()
-  const [selected, setSelected] = useState('')
-  const handleSelect = (selection: string) => {
-    setSelected(selection)
-  }
-
+  
   const drawerContent = (
     mainList.map(item => <ItemList item={item} setSelected={handleSelect}/>)
   )
@@ -35,8 +31,8 @@ export const DrawerCustom: React.FC<DrawerCustomProps> = ({ isOpen, onClose }) =
         height: "100%",
         '& .MuiDrawer-paper': {
           backgroundColor: theme.palette.primary.main,
-          marginTop: 8,
-          width: isMediumSize ? 280 : '70%',
+          paddingTop: "20px",
+          width: 250,
         },
       }}
     >
@@ -45,16 +41,14 @@ export const DrawerCustom: React.FC<DrawerCustomProps> = ({ isOpen, onClose }) =
         src={logo}
         alt='Logo'
         sx={{
-          height: isMediumSize? 170 : 150, 
-          width: isMediumSize? 220 : 200,
-          margin: "0 auto"
+          height: isMediumSize? 170 : 140, 
+          width: isMediumSize? 220 : 190,
+          marginLeft: 2
         }}
       />
-      <List sx={{margin: '0 auto'}}>
+      <List>
         {drawerContent}
-        {selected}
       </List>
     </Drawer>
   )
 };
-// {mainList.map(item => <ItemList item={item} setSelected={handleOptionClick}/>)}

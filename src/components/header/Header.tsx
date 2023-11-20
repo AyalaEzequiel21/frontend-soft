@@ -11,7 +11,7 @@ export const Header: React.FC<headerProps> = ({onClickButton}) => {
     return(
        <AppBar
         position="static"
-        sx={{backgroundColor: theme.palette.primary.main, zIndex:100}}
+        sx={{backgroundColor: theme.palette.primary.main, zIndex:100, height: '50px'}}
        >
             <Toolbar>
                 <IconButton 
@@ -19,7 +19,7 @@ export const Header: React.FC<headerProps> = ({onClickButton}) => {
                     color="inherit"
                     sx={{
                         marginRight: 1,
-                        display: { xs: "block", sm: "none" },
+                        display: { xs: "block", md: "none" },
                         fontSize: "2rem",
                     }}
                     onClick={onClickButton}

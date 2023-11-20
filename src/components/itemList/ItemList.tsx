@@ -1,4 +1,4 @@
-import { ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
+import { ListItemButton, ListItemIcon, ListItemText, Typography } from '@mui/material';
 import { MenuItem } from '../../utilities/mainList';
 
 interface itemListProps {
@@ -8,12 +8,14 @@ interface itemListProps {
 
 export const ItemList: React.FC<itemListProps> = ({item, setSelected}) => {
     return (
-        <ListItemButton onClick={() => setSelected(item.value)}>
-            <ListItemText sx={{color: '#fff'}}>
-                <ListItemIcon sx={{color: '#fff'}}>
-                    {item.icon}
-                </ListItemIcon>
-                {item.label}
+        <ListItemButton onClick={() => setSelected(item.value)}> 
+            <ListItemText>
+                <Typography sx={{fontSize: '1.3rem', color: '#fff'}}>
+                    <ListItemIcon sx={{color: '#fff'}}>
+                        {item.icon}
+                    </ListItemIcon>
+                    {item.label}
+                </Typography>
             </ListItemText>
         </ListItemButton>
     )

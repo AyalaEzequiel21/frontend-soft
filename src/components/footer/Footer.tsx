@@ -10,7 +10,7 @@ export const Footer: React.FC<footerProps> = () => {
         sx={{
             height: 50,
             backgroundColor: theme.palette.primary.main,
-            zIndex: 100
+            width: '100%'
         }}
         component={"footer"}
         >
