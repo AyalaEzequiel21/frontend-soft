@@ -17,14 +17,13 @@ export const DrawerCustom: React.FC<DrawerCustomProps> = ({ isOpen, onClose, han
   const isMediumSize = CheckMediumScreen()
   
   const drawerContent = (
-    mainList.map(item => <ItemList item={item} setSelected={handleSelect}/>)
+    mainList.map(item => <ItemList item={item} setSelected={handleSelect} onClose={onClose}/>)
   )
 
   return (
     <Drawer 
       anchor="left"
       open={isMediumSize ? true : isOpen}
-      onClose={onClose}
       variant={isMediumSize? "permanent" : "temporary"}
       sx={{
         zIndex: 0,
