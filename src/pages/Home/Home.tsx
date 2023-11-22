@@ -1,5 +1,5 @@
 import {  Button, Grid } from "@mui/material"
-// import { useTheme } from '@mui/material/styles';
+import { useTheme } from '@mui/material/styles';
 import React, {useState} from 'react';
 import { DrawerCustom } from "../../components/drawer/DrawerCustom";
 import { Link } from "react-router-dom";
@@ -10,11 +10,13 @@ import { VentasSection } from "../../components/sections/VentasSection";
 import { PagosSection } from "../../components/sections/PagosSection";
 import { ReportesSection } from "../../components/sections/ReportesSection";
 import { ListasSection } from "../../components/sections/ListasSection";
+import { CheckMediumScreen } from "../../utilities/utilityFunction/checkMediaQuery";
 
 interface homeProps {}
 
 export const Home: React.FC<homeProps> = () => {
-    // const theme = useTheme()
+    const theme = useTheme()
+    const isMediumSize = CheckMediumScreen()
 
     const [drawerOpen, setDrawerOpen] = useState(false)
 
@@ -50,10 +52,10 @@ export const Home: React.FC<homeProps> = () => {
         <>
             <Header onClickButton={handleDrawerOpen}/>
             <Grid item container sx={{ minHeight: 'calc(100vh - 100px)' }} >
-                <Grid item xs={3}>
+                <Grid item xs={3} sx={{display: {xs: 'none', md: 'block'}}}>
                     <DrawerCustom isOpen={drawerOpen} onClose={handleDrawerClose} handleSelect={setSelectedOption}/>
                 </Grid>
-                <Grid item xs={9}>
+                <Grid item xs={9} sx={{backgroundColor: theme.palette.background.default, margin: isMediumSize ? '0' : '0 auto'}}>
                     {renderSection()}
                     <Link to={"/login"}><Button variant="contained" sx={{m: 10}}>Login</Button></Link>
                 </Grid>

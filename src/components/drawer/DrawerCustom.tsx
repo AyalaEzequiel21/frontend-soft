@@ -24,6 +24,7 @@ export const DrawerCustom: React.FC<DrawerCustomProps> = ({ isOpen, onClose, han
     <Drawer 
       anchor="left"
       open={isMediumSize ? true : isOpen}
+      onClose={onClose}
       variant={isMediumSize? "permanent" : "temporary"}
       sx={{
         zIndex: 0,
