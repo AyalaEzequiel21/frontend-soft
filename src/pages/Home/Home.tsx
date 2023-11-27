@@ -1,66 +1,38 @@
-import {  Button, Grid } from "@mui/material"
-import { useTheme } from '@mui/material/styles';
-import React, {useState} from 'react';
-import { DrawerCustom } from "../../components/drawer/DrawerCustom";
-import { Link } from "react-router-dom";
-import { Header } from "../../components/header/Header";
-import { Footer } from "../../components/footer/Footer";
-import { ClientesSection } from "../../components/sections/ClientesSection";
-import { VentasSection } from "../../components/sections/VentasSection";
-import { PagosSection } from "../../components/sections/PagosSection";
-import { ReportesSection } from "../../components/sections/ReportesSection";
-import { ListasSection } from "../../components/sections/ListasSection";
-import { CheckMediumScreen } from "../../utilities/utilityFunction/checkMediaQuery";
+import { Footer } from "@/components/common/Footer"
+import { NavBar } from "@/components/common/NavBar"
+import { SideBar } from "@/components/common/SideBar"
+import {Grid, Box} from "@mui/material"
+import { useState } from "react"
 
-interface homeProps {}
+interface homeProps {
+    // children: React.ReactNode
+}
 
 export const Home: React.FC<homeProps> = () => {
-    const theme = useTheme()
-    const isMediumSize = CheckMediumScreen()
 
-    const [drawerOpen, setDrawerOpen] = useState(false)
+const [isOpen, setIsOpen] = useState(false)
+const [sectionSelected, setSectionSelected] = useState('home')
 
-    const handleDrawerOpen = () => {
-        setDrawerOpen(true)
-    }
+const handleCloseMenu = () => {
+    setIsOpen(false)
+}
 
-    const handleDrawerClose = () => {
-        setDrawerOpen(false)
-    }
-
-    const [selectedOption, setSelectedOption] = useState('clientes'); // Opción seleccionada por defecto
-
-    const renderSection = () => {
-        switch (selectedOption) {
-        case 'clientes':
-            return <ClientesSection />;
-        case 'ventas':
-            return <VentasSection />;
-        case 'pagos':
-            return <PagosSection />;
-        case 'reportes':
-            return <ReportesSection />;
-        case 'listas':
-            return <ListasSection />;
-        // Agrega más casos según tus secciones
-        default:
-            return <>jajaja</>;
-        }
-    };
+const handleOpenMenu = () => {
+    setIsOpen(true);
+}
 
     return (
-        <>
-            <Header onClickButton={handleDrawerOpen}/>
-            <Grid item container sx={{ minHeight: 'calc(100vh - 100px)' }} >
-                <Grid item xs={3} sx={{display: {xs: 'none', md: 'block'}}}>
-                    <DrawerCustom isOpen={drawerOpen} onClose={handleDrawerClose} handleSelect={setSelectedOption}/>
+        <Box sx={{height: '100%', p: '0',  display: 'flex', flexDirection: 'column'}}>
+            <NavBar onMenuClick={handleOpenMenu}/>
+            <Grid container sx={{height: 'calc(100% - 124px)', mt: '64px', display: 'flex', justifyContent: 'center'}}>
+                <Grid item xs={2.5} md={3} sx={{display: {xs: 'none', md: 'block'}}}>
+                    <SideBar isOpen={isOpen} onClose={handleCloseMenu} setSelected={setSectionSelected}/>
                 </Grid>
-                <Grid item xs={9} sx={{backgroundColor: theme.palette.background.default, margin: isMediumSize ? '0' : '0 auto'}}>
-                    {renderSection()}
-                    <Link to={"/login"}><Button variant="contained" sx={{m: 10}}>Login</Button></Link>
+                <Grid item xs={9.5} md={9} sx={{ overflow: 'auto' }}>
+                    <h2 style={{color: 'black'}}>{sectionSelected}</h2>
                 </Grid>
             </Grid>
             <Footer />
-        </>
+        </Box>
     )
 }
