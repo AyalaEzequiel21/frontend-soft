@@ -1,8 +1,9 @@
 import { Footer } from "@/components/common/Footer"
 import { NavBar } from "@/components/common/NavBar"
 import { SideBar } from "@/components/common/SideBar"
-import {Grid, Box} from "@mui/material"
+import {Grid, Box, Button} from "@mui/material"
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 interface homeProps {
     // children: React.ReactNode
@@ -12,6 +13,7 @@ export const Home: React.FC<homeProps> = () => {
 
 const [isOpen, setIsOpen] = useState(false)
 const [sectionSelected, setSectionSelected] = useState('home')
+const navigate = useNavigate()
 
 const handleCloseMenu = () => {
     setIsOpen(false)
@@ -24,12 +26,13 @@ const handleOpenMenu = () => {
     return (
         <Box sx={{height: '100%', p: '0',  display: 'flex', flexDirection: 'column'}}>
             <NavBar onMenuClick={handleOpenMenu}/>
-            <Grid container sx={{height: 'calc(100% - 124px)', mt: '64px', display: 'flex', justifyContent: 'center'}}>
-                <Grid item xs={2.5} md={3} sx={{display: {xs: 'none', md: 'block'}}}>
+            <Grid container sx={{height: 'calc(100% - 124px)', mt: '64px', display: 'flex', justifyContent: {xs: 'center', sm:'space-between'}}}>
+                <Grid item sm={3.3} md={2.7} lg={2.5} sx={{display: {xs: 'none', sm: 'block'}}}>
                     <SideBar isOpen={isOpen} onClose={handleCloseMenu} setSelected={setSectionSelected}/>
                 </Grid>
-                <Grid item xs={9.5} md={9} sx={{ overflow: 'auto' }}>
+                <Grid item sm={7.7} md={8.5} lg={9} sx={{ overflow: 'auto' }}>
                     <h2 style={{color: 'black'}}>{sectionSelected}</h2>
+                    <Button variant="contained" color="secondary" onClick={() => navigate('/login')}>Login</Button>
                 </Grid>
             </Grid>
             <Footer />

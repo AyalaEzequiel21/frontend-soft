@@ -2,7 +2,6 @@ import { MenuItem } from "@/data/ListMenuOptions";
 import { ListItemButton, ListItemIcon, ListItemText, Typography, useTheme } from '@mui/material';
 import React from "react";
 
-
 interface itemListProps {
     option: MenuItem,
     onCloseMenu: ()=> void,
@@ -19,10 +18,12 @@ const handleClickButton = (value: string) => {
     return (
         <ListItemButton onClick={() => handleClickButton(option.value)}>
             <ListItemText>
-                <Typography sx={{display: 'flex', alignItems: 'center', justifyContent: 'flex-start'}}>
-                    <ListItemIcon sx={{color: palette.text.primary}}>{option.icon}</ListItemIcon>
-                    {option.label}
-                </Typography>
+                    <ListItemIcon sx={{color: palette.text.primary, '&:hover': {color: palette.secondary.main}}}>
+                        {option.icon}
+                        <Typography variant="h2" sx={{ml: '20px'}}>
+                            {option.label}
+                        </Typography>
+                    </ListItemIcon>
             </ListItemText>
         </ListItemButton>
         )

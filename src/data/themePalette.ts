@@ -20,7 +20,10 @@ export const themePalette = {
     // FONT 
     F_FAMILY:  `["Inter", san-serif]`,
     F_FAMILY_2:  `["JetBrains Mono", monospace]`,
-    F_SIZE: 15,
-    F_SIZE_2: 14
+    F_SIZE_h1: 28,
+    F_SIZE_h2: 22,
+    F_SIZE_h3: 18,
+    F_SIZE_h4: 16,
+    F_SIZE_p: 13,
 }
 

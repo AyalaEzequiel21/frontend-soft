@@ -21,29 +21,39 @@ export const SideBar: React.FC<sideBarProps> = ({isOpen, onClose, setSelected}) 
             open={isOpen}
             onClose={onClose}
             variant={isMediumSize? "permanent" : "temporary"}
-            sx={{  transitionDuration: '0.7s',
+            sx={{  
                 '& .MuiDrawer-paper': {
                     border: 'none', 
                     borderRadius: isMediumSize ? '0' : '0 0.5em 0 0', 
-                    mt: '57px', 
-                    mb: '60px', 
-                    width: isMediumSize? '300px' : '230px'
-                }}}
+                    mt: isMediumSize ? '64px' : '60px',
+                    height: `calc(100% - ${isMediumSize ? '124px' : '60px'})`,
+                    width: {xs: '200px', sm: '210px', md: '220px', lg: '250px'}
+                }
+            }}
         >
-            <List sx={{bgcolor: palette.primary.main, height: '100%'}}>
+            <Box 
+                bgcolor={palette.primary.main} 
+                height={'100%'} 
+                display={'flex'}
+                flexDirection={'column'}
+                alignItems={'center'}
+            >
                 <Box 
                     component={'img'}
                     src={logo}
                     alt="logo"
                     sx={{
-                        height: isMediumSize? 150 : 110, 
-                        width: isMediumSize? 190 : 150,
-                        marginLeft: isMediumSize? 0 : 1
-                        
+                        height: isMediumSize? 130 : 110, 
+                        width: isMediumSize? 170 : 150,
                       }}
                 />
-                {ListMenuOptions.map(item => <ItemList onCloseMenu={onClose} option={item} setSelected={setSelected} key={item.value}/>)}
-            </List>
+                <List sx={{
+                    bgcolor: palette.primary.main, 
+                    }}>
+                    
+                    {ListMenuOptions.map(item => <ItemList onCloseMenu={onClose} option={item} setSelected={setSelected} key={item.value}/>)}
+                </List>
+            </Box>
         </Drawer>
     )
 }

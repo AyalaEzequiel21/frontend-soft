@@ -25,7 +25,7 @@ export const ListMenuOptions = [
     {
         label: "Productos",
         icon: <ListAltIcon/>,
-        value: "ventas"
+        value: "productos"
     },
     {
         label: "Pagos",

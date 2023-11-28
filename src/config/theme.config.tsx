@@ -1,4 +1,3 @@
-// import {themePalette} from "@/enums/themePalette"
 import { themePalette } from "@/data/themePalette"
 import { ThemeProvider, createTheme } from "@mui/material"
 import React from "react"
@@ -6,6 +5,7 @@ import React from "react"
 type themeProps = {
   children: React.ReactNode
 }
+
 
 const theme = createTheme({
   palette: {
@@ -32,10 +32,18 @@ const theme = createTheme({
     }
   },
   typography: {
-    fontSize: themePalette.F_SIZE, 
-
+    fontSize: themePalette.F_SIZE_p, 
+    h1: {
+      fontSize: themePalette.F_SIZE_h1
+    },
+    h2: {
+      fontSize: themePalette.F_SIZE_h2
+    },
+    h3: {
+      fontSize: themePalette.F_SIZE_h3
+    }, 
     h4: {
-      fontSize: themePalette.F_SIZE_2
+      fontSize: themePalette.F_SIZE_h4
     }
   },
 

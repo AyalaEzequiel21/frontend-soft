@@ -1,4 +1,4 @@
-import { AppBar, Toolbar, Typography, IconButton } from '@mui/material'
+import { AppBar, Toolbar, Typography, IconButton, useTheme } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu'
 import LogoutIcon from '@mui/icons-material/Logout'
 import { CheckMediumScreen } from '@/utilities/utilityFunction/checkMediaQuery'
@@ -10,18 +10,20 @@ interface navBarProp {
 
 export const NavBar: React.FC<navBarProp> = ({onMenuClick}) => {
     const isMediumSize = CheckMediumScreen()
-
+    const {palette} = useTheme()
     return (
         <AppBar position='fixed'>
             <Toolbar>
                 <FlexBetweenBox width={'100%'}>
                     <FlexBetweenBox>
                         {!isMediumSize && <IconButton color='info' onClick={onMenuClick}><MenuIcon /></IconButton>}
-                        <Typography>Praderas</Typography>    
+                        <Typography variant='h3'>Praderas</Typography>    
                     </FlexBetweenBox>
                     <FlexBetweenBox>
-                    <Typography variant='h4'>User</Typography>    
-                     <IconButton color='info'><LogoutIcon /></IconButton>
+                    <Typography variant='h2'>User</Typography>    
+                     <IconButton color='info' sx={{ml: '10px', '&:hover': {color: palette.secondary.main}}}>
+                        <LogoutIcon />
+                    </IconButton>
                     </FlexBetweenBox>
                    </FlexBetweenBox>
             </Toolbar>
