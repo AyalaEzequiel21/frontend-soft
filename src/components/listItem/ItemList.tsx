@@ -18,9 +18,9 @@ const handleClickButton = (value: string) => {
     return (
         <ListItemButton onClick={() => handleClickButton(option.value)}>
             <ListItemText>
-                    <ListItemIcon sx={{color: palette.text.primary, '&:hover': {color: palette.secondary.main}}}>
+                    <ListItemIcon sx={{color: palette.info.main, '&:hover': {color: palette.secondary.main}}}>
                         {option.icon}
-                        <Typography variant="h2" sx={{ml: '20px'}}>
+                        <Typography variant="h2"  sx={{ml: '20px', color: palette.info.main, '&:hover': {color: palette.secondary.main}}}>
                             {option.label}
                         </Typography>
                     </ListItemIcon>

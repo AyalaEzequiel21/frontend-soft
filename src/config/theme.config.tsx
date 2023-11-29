@@ -24,8 +24,8 @@ const theme = createTheme({
       dark: themePalette.SECONDARY_D,
     },
     text: {
-      primary: themePalette.TEXT_L, 
-      secondary: themePalette.TEXT_D,
+      primary: themePalette.TEXT_D, 
+      secondary: themePalette.PRIMARY_D,
     },
     info: {
       main: themePalette.TEXT_L
@@ -40,7 +40,8 @@ const theme = createTheme({
       fontSize: themePalette.F_SIZE_h2
     },
     h3: {
-      fontSize: themePalette.F_SIZE_h3
+      fontSize: themePalette.F_SIZE_h3,
+      fontWeight: "bold"
     }, 
     h4: {
       fontSize: themePalette.F_SIZE_h4
