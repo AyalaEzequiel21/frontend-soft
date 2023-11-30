@@ -26,7 +26,7 @@ export const SideBar: React.FC<sideBarProps> = ({isOpen, onClose, setSelected}) 
                     border: 'none', 
                     borderRadius: isMediumSize ? '0' : '0 0.5em 0 0', 
                     mt: isMediumSize ? '64px' : '60px',
-                    height: `calc(100% - ${isMediumSize ? '124px' : '60px'})`,
+                    height: `calc(100% - ${isMediumSize ? '84px' : '60px'})`,
                     width: {xs: '200px', sm: '210px', md: '220px', lg: '250px'}
                 }
             }}

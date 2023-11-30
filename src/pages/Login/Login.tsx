@@ -69,7 +69,7 @@ export const Login: React.FC<loginProps> = () => {
                                     error={!!errors.password}
                                     helperText={errors.password?.message}
                                 />
-                                <Button fullWidth type="submit" variant="contained" color="secondary" disabled={loading}><Typography variant="h2">{loading? (<CircularProgress color="inherit" size={30}/>) : "Iniciar"}</Typography></Button>
+                                <Button fullWidth type="submit" variant="contained" color="secondary" disabled={loading}><Typography variant="h3">{loading? (<CircularProgress color="inherit" size={30}/>) : "Iniciar"}</Typography></Button>
                             </Stack>
                         </Box>
                     </Paper>

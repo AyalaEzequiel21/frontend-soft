@@ -20,7 +20,7 @@ export const NavBar: React.FC<navBarProp> = ({onMenuClick}) => {
                         <Typography variant='h3'>Praderas</Typography>    
                     </FlexBetweenBox>
                     <FlexBetweenBox>
-                    <Typography variant='h2'>User</Typography>    
+                    <Typography variant='h3'>User</Typography>    
                      <IconButton color='info' sx={{ml: '10px', '&:hover': {color: palette.secondary.main}}}>
                         <LogoutIcon />
                     </IconButton>

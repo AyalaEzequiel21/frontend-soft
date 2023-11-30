@@ -38,14 +38,16 @@ const theme = createTheme({
       fontSize: themePalette.F_SIZE_h1
     },
     h2: {
-      fontSize: themePalette.F_SIZE_h2
+      fontSize: themePalette.F_SIZE_h2,
+      fontWeight: "bold"
     },
     h3: {
       fontSize: themePalette.F_SIZE_h3,
-      fontWeight: "bold"
+      fontWeight: 500
     }, 
     h4: {
-      fontSize: themePalette.F_SIZE_h4
+      fontSize: themePalette.F_SIZE_h3,
+      fontWeight: 700
     }
   },
 

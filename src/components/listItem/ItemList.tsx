@@ -20,7 +20,7 @@ const handleClickButton = (value: string) => {
             <ListItemText>
                     <ListItemIcon sx={{color: palette.info.main, '&:hover': {color: palette.secondary.main}}}>
                         {option.icon}
-                        <Typography variant="h2"  sx={{ml: '20px', color: palette.info.main, '&:hover': {color: palette.secondary.main}}}>
+                        <Typography variant="h3"  sx={{ml: '20px', color: palette.info.main, '&:hover': {color: palette.secondary.main}}}>
                             {option.label}
                         </Typography>
                     </ListItemIcon>
