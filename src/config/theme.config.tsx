@@ -28,7 +28,8 @@ const theme = createTheme({
       secondary: themePalette.PRIMARY_D,
     },
     info: {
-      main: themePalette.TEXT_L
+      main: themePalette.TEXT_L,
+      dark: themePalette.TEXT_G
     }
   },
   typography: {

@@ -8,6 +8,7 @@ export const themePalette = {
     PRIMARY_D: "#1e2b38",
     PRIMARY_L: "#566472",
 
+
     // SECONDARY COLORS
     SECONDARY: "#3498db",
     SECONDARY_D: "#246a99",
@@ -16,6 +17,7 @@ export const themePalette = {
     // TEXT COLORS
     TEXT_D: "#273748",
     TEXT_L: "#ecf0f1",
+    TEXT_G: "#d4d8d8",
 
     // FONT 
     F_FAMILY:  `["Inter", san-serif]`,
