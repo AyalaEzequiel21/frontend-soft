@@ -17,7 +17,7 @@ export const ActionCard: React.FC<actionCardProps> = ({label, iconAction, iconSe
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            // m: 10, 
+            m: 1, 
             backgroundImage: `linear-gradient(to bottom, ${palette.primary.light}, ${palette.secondary.dark})`,
             border: `2px solid ${palette.secondary.dark}`, 
             borderRadius: '0.5em',

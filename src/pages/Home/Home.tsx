@@ -34,7 +34,7 @@ const handleOpenMenu = () => {
                 <Grid container sm={7.7} md={8.5} lg={9} sx={{ overflow: 'auto', maxHeight: '100%' }}>
                     {/* <h2 style={{color: 'black'}}>{sectionSelected}</h2> */}
                     <SectionLayout sectionSelected={sectionSelected}/>
-                    <Button variant="contained" color="secondary" onClick={() => navigate('/login')}>Login</Button>
+                    {/* <Button variant="contained" color="secondary" onClick={() => navigate('/login')}>Login</Button> */}
                 </Grid>
             </Grid>
             <Footer />

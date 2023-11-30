@@ -31,8 +31,12 @@ export const SectionLayout: React.FC<sectioLayoutProps> = ({sectionSelected}) =>
     };
 
     return (
-        <Grid container sm={7.7} md={8.5} lg={9} alignItems='center' justifyContent='center' sx={{ maxHeight: '100%', width: '100%', margin: '0 auto'}} > 
-            {renderSection(sectionSelected)?.actions.map(action => <ActionCard label={action.actionName} iconAction={action.iconAction} iconSection={renderSection(sectionSelected)?.iconSection} key={action.actionName}/>)}
+        <Grid container sm={7.7} md={8.5} lg={9} justifyContent='center' alignItems='center' sx={{ maxHeight: '100%', width: '100%', margin: '0 auto'}} > 
+            {renderSection(sectionSelected)?.actions.map(action => (
+                <Grid item sm={12} md={6}>
+                    <ActionCard label={action.actionName} iconAction={action.iconAction} iconSection={renderSection(sectionSelected)?.iconSection} key={action.actionName}/>
+                </Grid>
+            ))}
         </Grid>
     )
 }
