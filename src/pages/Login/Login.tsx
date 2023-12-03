@@ -1,8 +1,9 @@
-import {Button, Container, Grid, Typography, Paper, TextField, Box, Stack, useTheme, CircularProgress} from "@mui/material"
+import {Button, Container, Grid, Typography, Paper, Box, Stack, useTheme, CircularProgress} from "@mui/material"
 import { useNavigate } from "react-router-dom"
 import { useForm } from 'react-hook-form'
 import { useState } from 'react';
 import logo from '@/assets/logo.png'
+import { CustomInput } from "@/components/customInput/CustomInput";
 
 interface loginProps {}
 
@@ -12,6 +13,7 @@ type FormValues = {
 }
 
 export const Login: React.FC<loginProps> = () => {
+    
     const navigate = useNavigate()
     const {palette} = useTheme()
 
@@ -47,25 +49,22 @@ export const Login: React.FC<loginProps> = () => {
                                     alt="logo"
                                     sx={{ height: 170, width: 220}}
                                 />
-                                <TextField 
-                                    fullWidth 
-                                    type="text" 
-                                    label='Usuario' 
-                                    color="secondary" 
-                                    {...register("user", {
-                                        required: "Por favor ingrese su nombre de usuario"
-                                    })}
+                                <CustomInput 
+                                    type="text"
+                                    label="Usuario"
+                                    register={register}
+                                    value="user"
+                                    msgError="Por favor ingrese su nombre de usuario"
                                     error={!!errors.user}
                                     helperText={errors.user?.message}
+                                    
                                 />
-                                <TextField 
-                                    fullWidth 
+                                <CustomInput 
                                     type="password" 
                                     label='Contraseña' 
-                                    color="secondary" 
-                                    {...register("password", {
-                                        required: "Por favor ingrese su contraseña"
-                                    })}
+                                    register={register}
+                                    value="password"
+                                    msgError="Por favor ingrese su contraseña"
                                     error={!!errors.password}
                                     helperText={errors.password?.message}
                                 />

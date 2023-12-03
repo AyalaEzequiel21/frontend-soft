@@ -61,6 +61,15 @@ const theme = createTheme({
         }
       }
     },
+    MuiIconButton: {
+      styleOverrides: {
+        root:{
+          '&:hover': {
+            color: themePalette.SECONDARY
+          }
+        }
+      }
+    }
   }
 })
 

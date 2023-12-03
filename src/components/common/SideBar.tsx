@@ -7,10 +7,9 @@ import logo from '@/assets/logo.png'
 interface sideBarProps {
     isOpen: boolean,
     onClose: ()=> void,
-    setSelected: (selection: string) => void
 }
 
-export const SideBar: React.FC<sideBarProps> = ({isOpen, onClose, setSelected}) => {
+export const SideBar: React.FC<sideBarProps> = ({isOpen, onClose}) => {
 
     const {palette} = useTheme()
     const isMediumSize = CheckMediumScreen()
@@ -51,7 +50,7 @@ export const SideBar: React.FC<sideBarProps> = ({isOpen, onClose, setSelected}) 
                     bgcolor: palette.primary.main, 
                     }}>
                     
-                    {ListMenuOptions.map(item => <ItemList onCloseMenu={onClose} option={item} setSelected={setSelected} key={item.value}/>)}
+                    {ListMenuOptions.map(item => <ItemList onCloseMenu={onClose} option={item} key={item.value}/>)}
                 </List>
             </Box>
         </Drawer>

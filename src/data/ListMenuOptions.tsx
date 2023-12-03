@@ -15,36 +15,36 @@ export const ListMenuOptions = [
     {
         label: "Clientes",
         icon: <AccountBox/>,
-        value: "clientes"
+        value: "clients"
     },
     {
         label: "Ventas",
         icon: <ReceiptIcon/>,
-        value: "ventas"
+        value: "sales"
     },
     {
         label: "Productos",
         icon: <ListAltIcon/>,
-        value: "productos"
+        value: "products"
     },
     {
         label: "Pagos",
         icon: <PaidIcon/>,
-        value: "pagos"
+        value: "payments"
     },
     {
         label: "Reportes",
         icon: <Assessment/>,
-        value: "reportes"
+        value: "reports"
     },
     {
         label: "Listas",
         icon: <ChecklistIcon/>,
-        value: "listas"
+        value: "orders"
     },
     {
         label: "Usuarios",
         icon: <GroupIcon/>,
-        value: "usuarios"
+        value: "users"
     }
 ]

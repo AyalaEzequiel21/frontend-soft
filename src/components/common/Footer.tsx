@@ -8,7 +8,8 @@ export const Footer: React.FC<object> = () => {
         <Box
             component={'footer'}
             sx={{
-                height: {xs: '10px', sm: '20px'},
+                height: '20px',
+                width: '100%',
                 mt: 'auto',
                 bgcolor: palette.primary.main
             }}
