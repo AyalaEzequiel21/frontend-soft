@@ -16,7 +16,7 @@ export const NavBar: React.FC<navBarProp> = ({onMenuClick}) => {
                 <FlexBetweenBox width={'100%'}>
                     <FlexBetweenBox>
                         {!isMediumSize && <IconButton color='info' onClick={onMenuClick}><MenuIcon /></IconButton>}
-                        <Typography variant='h3'>Praderas</Typography>    
+                        <Typography variant='h3'>Client Manager</Typography>    
                     </FlexBetweenBox>
                     <FlexBetweenBox>
                     <Typography variant='h3'>User</Typography>    
