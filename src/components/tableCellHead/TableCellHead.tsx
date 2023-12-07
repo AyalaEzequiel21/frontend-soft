@@ -10,11 +10,12 @@ const {palette} = useTheme()
 
     return <TableCell 
                 variant="head"
+                align="center"
                 size="medium"
                 sx={{
                     backgroundColor: palette.primary.light,
                     fontSize: '1.2rem',
-                    fontWeight: 600,
+                    fontWeight: 'bold',
                     color: palette.info.main
                 }}
             >{children}</TableCell>

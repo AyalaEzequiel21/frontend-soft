@@ -12,7 +12,7 @@ const isMediumSize = CheckMediumScreen()
 const {palette} = useTheme()
 
     return (
-        <TableContainer component={Paper}>
+        <TableContainer component={Paper} sx={{mt: 1, maxWidth: '1100px', boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)', borderRadius: '0.5em'}}>
             <Table>
                 <TableHead style={{backgroundColor: palette.grey[100]}}>
                     <TableRow>

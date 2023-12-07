@@ -30,6 +30,9 @@ const theme = createTheme({
     info: {
       main: themePalette.TEXT_L,
       dark: themePalette.TEXT_G
+    },
+    error: {
+      main: themePalette.DANGER_COLOR
     }
   },
   typography: {

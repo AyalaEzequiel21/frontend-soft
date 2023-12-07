@@ -8,6 +8,8 @@ interface tableCellProps {
 export const TableCellBody: React.FC<tableCellProps> = ({children}) => {
     return <TableCell 
                 variant="head"
+                align="center"
                 size="medium"
+                sx={{fontWeight: 600}}
             >{children}</TableCell>
 }

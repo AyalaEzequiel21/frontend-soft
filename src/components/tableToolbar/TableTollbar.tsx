@@ -1,5 +1,6 @@
 import { Box, Button, TextField } from '@mui/material'
 import {AddCircle, FilterList} from '@mui/icons-material';
+import { ButtonToolbar } from './ButtonToolbar';
 
 interface tableToolBarProps {
 
@@ -8,6 +9,7 @@ interface tableToolBarProps {
 export const TableToolbar: React.FC<tableToolBarProps> = () => {
     return (
         <Box display='flex' alignItems='center' marginY={1} gap={1}>
+            <ButtonToolbar label='Crear' icon={<AddCircle />}/>
             <Button variant='contained'><AddCircle sx={{marginRight: 1}}/> Agregar</Button>
             <Button variant='outlined'><FilterList sx={{marginRight: 1}}/> Filtrar</Button>
             {/* <Autocomplete

@@ -4,7 +4,7 @@ import { Box, Typography } from "@mui/material"
 
 export const Clients = () => {
     return(
-        <Box display='flex' flexDirection='column'  height='100%' width='100%'>
+        <Box display='flex' flexDirection='column'  height='100%' width='100%' m={1}>
             <Typography variant="h4">Clientes</Typography>
             <TableToolbar />    
             <CustomTable />

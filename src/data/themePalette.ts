@@ -19,6 +19,9 @@ export const themePalette = {
     TEXT_L: "#ecf0f1",
     TEXT_G: "#d4d8d8",
 
+    // DANGER COLORS
+    DANGER_COLOR: "#e0433a",
+
     // FONT 
     F_FAMILY:  `["Inter", san-serif]`,
     F_FAMILY_2:  `["JetBrains Mono", monospace]`,
