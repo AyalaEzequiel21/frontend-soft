@@ -36,23 +36,19 @@ export const AppLayout: React.FC<object> = () => {
                     height: 'calc(100vh - 84px)', 
                     mt: '64px', 
                     display: 'flex', 
-                    justifyContent: {
-                        xs: 'center', 
-                        sm:'space-between'
-                        }
                 }}
             >
                 <Grid 
                     item 
                     md={2.7} 
-                    lg={2.5} 
+                    lg={2} 
                     sx={{
                         display: {xs: 'none', md: 'block'}
                     }}
                 >
                     <SideBar isOpen={isOpenSideBar} onClose={handleCloseSideBar}/>
                 </Grid>
-                <Grid container md={8.5} lg={9} sx={{ maxHeight: '100%' }}> 
+                <Grid container md={9.3} lg={10} alignItems='center' justifyContent='center' sx={{ maxHeight: '100%', p: 2 }}> 
                     <Outlet />
                  </Grid>
             </Grid>

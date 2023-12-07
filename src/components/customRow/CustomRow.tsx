@@ -20,7 +20,8 @@ export const CustomRow: React.FC<customRowProps> = ({client}) => {
                 <TableCellBody><Button fullWidth variant="outlined" sx={{p: 1, m: '0', textAlign: 'start', fontWeight: 500}}>{client.nombre}</Button></TableCellBody>
                 <TableCellBody>$ {client.balance}</TableCellBody>
                 {isMediumSize && <TableCellBody>{client.telefono}</TableCellBody>}
-                {isMediumSize && <TableCellBody><IconButton><Create /></IconButton><IconButton sx={{color: palette.error.main}}><DeleteForever /></IconButton></TableCellBody>}
+                {isMediumSize && <TableCellBody><IconButton sx={{color: palette.primary.light}}><Create /></IconButton></TableCellBody>}
+                {isMediumSize && <TableCellBody><IconButton sx={{color: palette.primary.light, '&:hover': {color: palette.error.main}}}><DeleteForever /></IconButton></TableCellBody>}
             </TableRow>
             
     )

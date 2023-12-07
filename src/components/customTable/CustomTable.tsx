@@ -17,11 +17,11 @@ const {palette} = useTheme()
                 <TableHead style={{backgroundColor: palette.grey[100]}}>
                     <TableRow>
                         {/* <TableCellHead> </TableCellHead> */}
-                        <TableCellHead>Cat</TableCellHead>
-                        <TableCellHead>Nombre</TableCellHead>
-                        <TableCellHead>Balance</TableCellHead>
-                        {isMediumSize && <TableCellHead>Teléfono</TableCellHead>}
-                        {isMediumSize && <TableCellHead> </TableCellHead>}
+                        <TableCellHead colSpan={1}>Cat</TableCellHead>
+                        <TableCellHead colSpan={1}>Nombre</TableCellHead>
+                        <TableCellHead colSpan={1}>Balance</TableCellHead>
+                        {isMediumSize && <TableCellHead colSpan={1}>Teléfono</TableCellHead>}
+                        {isMediumSize && <TableCellHead colSpan={2}> </TableCellHead>}
                     </TableRow>
                 </TableHead>
                 <TableBody>

@@ -1,5 +1,5 @@
-import { Box, Button, TextField } from '@mui/material'
-import {AddCircle, FilterList} from '@mui/icons-material';
+import { Box, TextField } from '@mui/material'
+import {AddCircle, FilterList, Search} from '@mui/icons-material';
 import { ButtonToolbar } from './ButtonToolbar';
 
 interface tableToolBarProps {
@@ -8,10 +8,10 @@ interface tableToolBarProps {
 
 export const TableToolbar: React.FC<tableToolBarProps> = () => {
     return (
-        <Box display='flex' alignItems='center' marginY={1} gap={1}>
-            <ButtonToolbar label='Crear' icon={<AddCircle />}/>
-            <Button variant='contained'><AddCircle sx={{marginRight: 1}}/> Agregar</Button>
-            <Button variant='outlined'><FilterList sx={{marginRight: 1}}/> Filtrar</Button>
+        <Box display='flex' alignItems='center' marginY={1} gap={1} height='50px'>
+            <ButtonToolbar label='Crear' icon={<AddCircle />} isContained={true}/>
+            <ButtonToolbar label='Filtrar' icon={<FilterList />} isContained={false}/>
+
             {/* <Autocomplete
                 freeSolo
                 id='clients'
@@ -20,7 +20,8 @@ export const TableToolbar: React.FC<tableToolBarProps> = () => {
                 sx={{minWidth: '300px'}}
                 renderInput={(params) => <TextField {...params} label='search' fullWidth/>}
             /> */}
-            <TextField type='text '/>
+            <TextField type='text ' size='small'/>
+            <ButtonToolbar label='Buscar' icon={<Search />} isContained={true}/>
         </Box>
     )
 }
