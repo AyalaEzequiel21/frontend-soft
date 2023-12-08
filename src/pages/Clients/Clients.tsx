@@ -4,8 +4,8 @@ import { Box, Typography, Divider } from "@mui/material"
 
 export const Clients = () => {
     return(
-        <Box display='flex' flexDirection='column'  height='100%' width='100%'>
-            <Typography variant="h4">Clientes</Typography>
+        <Box display='flex' flexDirection='column'  height='100%' width='100%' alignItems='center' maxWidth='1100px'>
+            <Typography variant="h2" textAlign='start' width='100%'>Clientes</Typography>
             <Divider sx={{maxWidth: '1100px'}}/>
             <TableToolbar />    
             <Divider sx={{maxWidth: '1100px'}}/>

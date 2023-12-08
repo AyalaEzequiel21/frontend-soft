@@ -16,13 +16,17 @@ export const CustomRow: React.FC<customRowProps> = ({client}) => {
     return (
         
             <TableRow key={client.id}>
-                <TableCellBody>{client.category}</TableCellBody>
-                <TableCellBody><Button fullWidth variant="outlined" sx={{p: 1, m: '0', textAlign: 'start', fontWeight: 500}}>{client.nombre}</Button></TableCellBody>
-                <TableCellBody>$ {client.balance}</TableCellBody>
-                {isMediumSize && <TableCellBody>{client.telefono}</TableCellBody>}
-                {isMediumSize && <TableCellBody><IconButton sx={{color: palette.primary.light}}><Create /></IconButton></TableCellBody>}
-                {isMediumSize && <TableCellBody><IconButton sx={{color: palette.primary.light, '&:hover': {color: palette.error.main}}}><DeleteForever /></IconButton></TableCellBody>}
+                {isMediumSize && <TableCellBody isFlex={false}>{client.category}</TableCellBody>}
+                <TableCellBody isFlex={false}><Button fullWidth variant="outlined" sx={{p: 1, m: '0', textAlign: 'center', fontWeight: 500, maxHeight: '50px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap'}}>{client.nombre}</Button></TableCellBody>
+                <TableCellBody isFlex={false}>$ {client.balance}</TableCellBody>
+                {isMediumSize && <TableCellBody isFlex={false}>{client.telefono}</TableCellBody>}
+                <TableCellBody isFlex={false}><IconButton sx={{color: palette.primary.light, p: 0}}><Create /></IconButton></TableCellBody>
+                <TableCellBody isFlex={false}><IconButton sx={{color: palette.primary.light, '&:hover': {color: palette.error.main}}}><DeleteForever /></IconButton></TableCellBody>
             </TableRow>
             
     )
 }
+
+// overflow: 'hidden',  // Oculta el contenido que excede el tamaño
+    //   textOverflow: 'ellipsis',  // Agrega puntos suspensivos (...) al final del texto truncado
+    //   whiteSpace: 'nowrap'  // Evita el salto de línea y trunca el texto a una línea

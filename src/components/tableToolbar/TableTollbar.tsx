@@ -8,7 +8,7 @@ interface tableToolBarProps {
 
 export const TableToolbar: React.FC<tableToolBarProps> = () => {
     return (
-        <Box display='flex' alignItems='center' marginY={1} gap={1} height='50px'>
+        <Box display='flex' alignItems='start' marginY={1} gap={1} height='50px' width='100%' justifyContent='start' p='0 10'>
             <ButtonToolbar label='Crear' icon={<AddCircle />} isContained={true}/>
             <ButtonToolbar label='Filtrar' icon={<FilterList />} isContained={false}/>
 
