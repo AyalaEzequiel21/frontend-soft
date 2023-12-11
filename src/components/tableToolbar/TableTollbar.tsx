@@ -20,8 +20,8 @@ export const TableToolbar: React.FC<tableToolBarProps> = () => {
                 sx={{minWidth: '300px'}}
                 renderInput={(params) => <TextField {...params} label='search' fullWidth/>}
             /> */}
-            <TextField type='text ' size='small'/>
-            <ButtonToolbar label='Buscar' icon={<Search />} isContained={true}/>
+            <TextField type='text ' size='small'  placeholder='Buscar por nombre'/>
+            <ButtonToolbar label='' icon={<Search />} isContained={true}/>
         </Box>
     )
 }

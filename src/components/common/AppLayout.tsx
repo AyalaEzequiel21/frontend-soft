@@ -40,15 +40,15 @@ export const AppLayout: React.FC<object> = () => {
             >
                 <Grid 
                     item 
-                    md={2.7} 
-                    lg={2} 
+                    md={3} lg={2.5} xl={2}
                     sx={{
-                        display: {xs: 'none', md: 'block'}
+                        display: {xs: 'none', md: 'block'},
+                        maxWidth: {xs: '210px', sm: '220px', md: '230px', lg: '260px'}
                     }}
                 >
                     <SideBar isOpen={isOpenSideBar} onClose={handleCloseSideBar}/>
                 </Grid>
-                <Grid container md={9.3} lg={10} alignItems='center' justifyContent='center' sx={{ maxHeight: '100%', p: 2 }}> 
+                <Grid container md={9} lg={9.5} xl={10} alignItems='center' justifyContent='center' sx={{ maxHeight: '100%', p: 2 }}> 
                     <Outlet />
                  </Grid>
             </Grid>

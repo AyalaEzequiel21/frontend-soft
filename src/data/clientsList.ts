@@ -1,13 +1,4 @@
-export type ClientType = {
-  id: string,
-  nombre: string,
-  telefono: string,
-  balance: number,
-  category: string,
-  in_delivery: boolean,
-  pagos: string[],
-  ventas: string[]
-}
+
 
 export const clientsList = [
     {
@@ -73,6 +64,36 @@ export const clientsList = [
     {
       "id": "c3234",
       "nombre": "eze salamines",
+      "telefono": "555-123-4567",
+      "balance": 3000,
+      "category": 'cat-2',
+      "in_delivery": false,
+      "pagos": ["Pago5", "Pago6"],
+      "ventas": ["Venta5", "Venta6"]
+    },
+    {
+      "id": "c2324",
+      "nombre": "Colo sergio",
+      "telefono": "987-654-324234",
+      "balance": 7500,
+      "category": 'cat-1',
+      "in_delivery": false,
+      "pagos": ["Pago3", "Pago4"],
+      "ventas": ["Venta3", "Venta4"]
+    },
+    {
+      "id": "c334",
+      "nombre": "alfonso",
+      "telefono": "555-123-4567",
+      "balance": 3000,
+      "category": 'cat-2',
+      "in_delivery": true,
+      "pagos": ["Pago5", "Pago6"],
+      "ventas": ["Venta5", "Venta6"]
+    },
+    {
+      "id": "c3234",
+      "nombre": "manuel lp",
       "telefono": "555-123-4567",
       "balance": 3000,
       "category": 'cat-2',
