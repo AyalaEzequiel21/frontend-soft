@@ -2,10 +2,13 @@ import { AppLayout } from '@/components/common/AppLayout'
 import  {Home}  from '@/pages/Home/Home'
 import { Login } from '@/pages/Login/Login'
 import { createHashRouter, RouterProvider } from 'react-router-dom'
-import { Clients } from './pages/Clients/Clients'
-import { Products } from './pages/Products/Products'
-import { Users } from './pages/Users/Users'
-import { Payments } from './pages/Payments/Payments'
+import { Clients } from '@/pages/Clients/Clients'
+import { Products } from '@/pages/Products/Products'
+import { Users } from '@/pages/Users/Users'
+import { Payments } from '@/pages/Payments/Payments'
+import { Sales } from '@/pages/Sales/Sales'
+import { Reports } from './pages/Reports/Reports'
+import { Orders } from './pages/Orders/Orders'
  
 const router = createHashRouter([
   {
@@ -31,6 +34,18 @@ const router = createHashRouter([
       {
         path: '/payments',
         element: <Payments />
+      },
+      {
+        path: '/sales',
+        element: <Sales/>
+      },
+      {
+        path: '/reports',
+        element: <Reports/>
+      },
+      {
+        path: '/orders',
+        element: <Orders/>
       }
     ]
   }, 

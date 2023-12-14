@@ -18,7 +18,7 @@ export const CustomTableCell: React.FC<customTableCellProps> = ({children, isHea
             sx={{
                 backgroundColor: isHead ? palette.primary.light : '',
                 fontSize: '1.2rem',
-                fontWeight: 'bold',
+                fontWeight: '500',
                 color: isHead ? palette.info.main : palette.text.primary,
                 p: {xs: '14px 7px', md: '16px 10px', lg: '16px'}
             }}

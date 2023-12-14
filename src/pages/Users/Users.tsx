@@ -5,7 +5,5 @@ import { usersList } from "@/data/sectionsData/usersList"
 interface usersProps {}
 
 export const Users: React.FC<usersProps> = () => {
-    return (
-        <ResultsSectionLayout title="Usuarios" headItems={userHeaderItem} dataRows={usersList}/>
-    )
+    return <ResultsSectionLayout title="Usuarios" headItems={userHeaderItem} dataRows={usersList}/>
 }
