@@ -21,3 +21,16 @@ export const CheckSmallScreen = () => {
     return isSmallScreen
 
 }
+
+export const sizePitcher = (startingVisible: string) => {
+    switch (startingVisible) {
+        case 'small': 
+            return CheckSmallScreen()
+        case 'medium': 
+            return CheckMediumScreen()
+        case 'large':
+            return CheckLargeScreen()
+        default :
+            return true
+    }
+}

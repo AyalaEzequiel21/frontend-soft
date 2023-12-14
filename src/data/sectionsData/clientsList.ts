@@ -2,7 +2,7 @@
 
 export const clientsList = [
     {
-      "id": "c1",
+      "_id": "c1",
       "nombre": "Horacio Munoz",
       "telefono": "123-456-7890",
       "balance": 5000,
@@ -12,7 +12,7 @@ export const clientsList = [
       "ventas": ["Venta1", "Venta2"]
     },
     {
-      "id": "c2",
+      "_id": "c2",
       "nombre": "Adrian flaco",
       "telefono": "987-654-3210",
       "balance": 7500,
@@ -22,7 +22,7 @@ export const clientsList = [
       "ventas": ["Venta3", "Venta4"]
     },
     {
-      "id": "c3",
+      "_id": "c3",
       "nombre": "jc lp",
       "telefono": "555-123-4567",
       "balance": 3000,
@@ -32,7 +32,7 @@ export const clientsList = [
       "ventas": ["Venta5", "Venta6"]
     },
     {
-      "id": "c12",
+      "_id": "c12",
       "nombre": "eze lp",
       "telefono": "123-456-7890",
       "balance": 51000,
@@ -42,7 +42,7 @@ export const clientsList = [
       "ventas": ["Venta1", "Venta2"]
     },
     {
-      "id": "c2324",
+      "_id": "c2324",
       "nombre": "Colo regue",
       "telefono": "987-654-324234",
       "balance": 7500,
@@ -52,7 +52,7 @@ export const clientsList = [
       "ventas": ["Venta3", "Venta4"]
     },
     {
-      "id": "c334",
+      "_id": "c334",
       "nombre": "Rene",
       "telefono": "555-123-4567",
       "balance": 3000,
@@ -62,7 +62,7 @@ export const clientsList = [
       "ventas": ["Venta5", "Venta6"]
     },
     {
-      "id": "c3234",
+      "_id": "c3234",
       "nombre": "eze salamines",
       "telefono": "555-123-4567",
       "balance": 3000,
@@ -72,7 +72,7 @@ export const clientsList = [
       "ventas": ["Venta5", "Venta6"]
     },
     {
-      "id": "c2324",
+      "_id": "c2324",
       "nombre": "Colo sergio",
       "telefono": "987-654-324234",
       "balance": 7500,
@@ -82,7 +82,7 @@ export const clientsList = [
       "ventas": ["Venta3", "Venta4"]
     },
     {
-      "id": "c334",
+      "_id": "c334",
       "nombre": "alfonso",
       "telefono": "555-123-4567",
       "balance": 3000,
@@ -92,7 +92,7 @@ export const clientsList = [
       "ventas": ["Venta5", "Venta6"]
     },
     {
-      "id": "c3234",
+      "_id": "c3234",
       "nombre": "manuel lp",
       "telefono": "555-123-4567",
       "balance": 3000,

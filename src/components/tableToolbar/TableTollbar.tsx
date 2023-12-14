@@ -21,7 +21,7 @@ export const TableToolbar: React.FC<tableToolBarProps> = () => {
                 renderInput={(params) => <TextField {...params} label='search' fullWidth/>}
             /> */}
             <TextField type='text ' size='small'  placeholder='Buscar por nombre'/>
-            <ButtonToolbar label='' icon={<Search />} isContained={true}/>
+            <ButtonToolbar label={undefined} icon={<Search />} isContained={true}/>
         </Box>
     )
 }
