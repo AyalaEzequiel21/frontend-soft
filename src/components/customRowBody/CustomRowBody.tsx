@@ -2,7 +2,6 @@ import {  TableRow, IconButton, useTheme, Button } from "@mui/material"
 import { DeleteForever, Create} from '@mui/icons-material'
 import { TableHeadItemType } from "@/utilities/types/TableHeadItemType"
 import { CustomTableCell } from "../customTableCell/CustomTableCell"
-import { ClientType } from "@/utilities/types/ClientType"
 import { sizePitcher } from "@/utilities/utilityFunction/checkMediaQuery"
 import { TableDataRowType } from "@/utilities/types/TableDataRowType"
 
@@ -15,7 +14,7 @@ export const CustomRowBody: React.FC<customRowProps> = ({client, itemsHead}) => 
 
     const {palette} = useTheme()
 
-    const getTableCell = (itemHead: TableHeadItemType, client: ClientType) => {
+    const getTableCell = (itemHead: TableHeadItemType, client: TableDataRowType) => {
       const {key, isPrincipal, starting} = itemHead
 
       if(key !== undefined && client[key] !== undefined){
@@ -39,7 +38,7 @@ export const CustomRowBody: React.FC<customRowProps> = ({client, itemsHead}) => 
     }
 
     return (
-            <TableRow key={client.id}>
+            <TableRow key={client._id}>
                 {itemsHead.map(item => getTableCell(item, client))}
                 <CustomTableCell colSpan={1} isHead={false}><IconButton sx={{color: palette.primary.light, p: 0}}><Create /></IconButton></CustomTableCell>
                 <CustomTableCell colSpan={1} isHead={false}><IconButton sx={{color: palette.primary.light, '&:hover': {color: palette.error.main}}}><DeleteForever /></IconButton></CustomTableCell>
