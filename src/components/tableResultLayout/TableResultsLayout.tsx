@@ -5,12 +5,12 @@ import { CustomTableCell } from "../customTableCell/CustomTableCell"
 import { TableDataRowType } from "@/utilities/types/TableDataRowType"
 import { CustomRowBody } from "../customRowBody/CustomRowBody"
 
-interface tableResultLayoutProps {
+interface tableResultLayoutProps<T extends TableDataRowType> {
     itemsHead: TableHeadItemType[],
-    dataRows:  TableDataRowType[]
+    dataRows:  T[]
 }
 
-export const TableResultLayout: React.FC<tableResultLayoutProps> = ({itemsHead, dataRows}) => {
+export const TableResultLayout = <T extends TableDataRowType>({itemsHead, dataRows}: tableResultLayoutProps<T>): JSX.Element => {
 
     const {palette} = useTheme()
 
@@ -30,7 +30,7 @@ export const TableResultLayout: React.FC<tableResultLayoutProps> = ({itemsHead, 
                 </TableHead>
                 <TableBody>
                     {dataRows.map(row => (
-                        <CustomRowBody itemsHead={itemsHead} client={row}/>
+                        <CustomRowBody itemsHead={itemsHead} data={row}/>
                     ))}
                 </TableBody>
             </Table>
