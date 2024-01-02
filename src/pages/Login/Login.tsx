@@ -1,14 +1,17 @@
 import {Button, Container, Grid, Typography, Paper, Box, Stack, useTheme, CircularProgress} from "@mui/material"
 import { useNavigate } from "react-router-dom"
 import { useForm } from 'react-hook-form'
-import { useState } from 'react';
+import { useEffect } from 'react';
 import logo from '@/assets/logo.png'
 import { CustomInput } from "@/components/customInput/CustomInput";
+import { EMethodsApi } from "@/enums/EMethodsApi";
+import { UseApiCallFunction } from "@/utilities/hooks/UseApiCallFunction";
+// import axios, { AxiosError, AxiosResponse } from "axios";
 
 interface loginProps {}
 
 type FormValues = {
-    user: string,
+    email: string,
     password: string
 }
 
@@ -17,17 +20,26 @@ export const Login: React.FC<loginProps> = () => {
     const navigate = useNavigate()
     const {palette} = useTheme()
 
-    // TODO LO QUE NECESITA EL FORM 
-
-    const [loading, setLoading] = useState(false)
-
     const {register, handleSubmit, formState: {errors}} = useForm<FormValues>()
+    const { data, error, isLoading, callApi } = UseApiCallFunction<FormValues>({
+        method: EMethodsApi.POST,
+        path: '/auth/login'
+    })
 
-    const onSubmit = (data: FormValues) => {
-        setLoading(true)
-        console.log(data);
-        setTimeout(()=> setLoading(false), 2000)
+    const onSubmit = async (dataForm: FormValues) => {
+        callApi(dataForm)
     }
+
+useEffect(() => {
+    if(data?.data && data.headers){
+        const cookieHeader = data.headers;
+        // const [, cookieValue] = cookieHeader.match(/jwt=([^;]+)/);
+        // localStorage.setItem('jwtToken', cookieValue);
+
+        console.log(data.data, cookieHeader)
+        navigate('/')
+    }
+}, [data, error])
 
     return (
         <Container maxWidth={false} sx={{backgroundColor: palette.primary.light}}>
@@ -53,10 +65,10 @@ export const Login: React.FC<loginProps> = () => {
                                     type="text"
                                     label="Usuario"
                                     register={register}
-                                    value="user"
+                                    value="email"
                                     msgError="Por favor ingrese su nombre de usuario"
-                                    error={!!errors.user}
-                                    helperText={errors.user?.message}
+                                    error={!!errors.email}
+                                    helperText={errors.email?.message}
                                     
                                 />
                                 <CustomInput 
@@ -68,7 +80,11 @@ export const Login: React.FC<loginProps> = () => {
                                     error={!!errors.password}
                                     helperText={errors.password?.message}
                                 />
-                                <Button fullWidth type="submit" variant="contained" color="secondary" disabled={loading}><Typography variant="h3">{loading? (<CircularProgress color="inherit" size={30}/>) : "Iniciar"}</Typography></Button>
+                                <Button fullWidth type="submit" variant="contained" color="secondary" disabled={isLoading}><Typography variant="h3">{isLoading? (<CircularProgress color="inherit" size={30}/>) : "Iniciar"}</Typography></Button>
+                                {error && 
+                                    <Box>
+                                        <Typography>Ha ocurrido un error durante la conexion</Typography>
+                                    </Box>}
                             </Stack>
                         </Box>
                     </Paper>
