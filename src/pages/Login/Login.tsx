@@ -1,4 +1,4 @@
-import {Button, Container, Grid, Typography, Paper, Box, Stack, useTheme, CircularProgress} from "@mui/material"
+import {Button, Container, Grid, Typography, Paper, Box, Stack, CircularProgress} from "@mui/material"
 import { useNavigate } from "react-router-dom"
 import { useForm } from 'react-hook-form'
 import { useEffect } from 'react';
@@ -6,12 +6,19 @@ import logo from '@/assets/logo.png'
 import { CustomInput } from "@/components/customInput/CustomInput";
 import { EMethodsApi } from "@/enums/EMethodsApi";
 import { UseApiCallFunction } from "@/utilities/hooks/UseApiCallFunction";
-// import axios, { AxiosError, AxiosResponse } from "axios";
+import { useTheme } from "@mui/material/styles";
+import { UseGlobalContext } from "@/utilities/hooks/UseGlobalContext";
 
 interface loginProps {}
 
+export type ResponseLogin = {
+    ok: boolean,
+    message: string,
+    user: string
+}
+
 type FormValues = {
-    email: string,
+    username: string,
     password: string
 }
 
@@ -21,7 +28,10 @@ export const Login: React.FC<loginProps> = () => {
     const {palette} = useTheme()
 
     const {register, handleSubmit, formState: {errors}} = useForm<FormValues>()
-    const { data, error, isLoading, callApi } = UseApiCallFunction<FormValues>({
+
+    const {contextUser, loginContext} = UseGlobalContext()
+
+    const { data, error, isLoading, callApi } = UseApiCallFunction<FormValues, ResponseLogin>({
         method: EMethodsApi.POST,
         path: '/auth/login'
     })
@@ -31,12 +41,9 @@ export const Login: React.FC<loginProps> = () => {
     }
 
 useEffect(() => {
-    if(data?.data && data.headers){
-        const cookieHeader = data.headers;
-        // const [, cookieValue] = cookieHeader.match(/jwt=([^;]+)/);
-        // localStorage.setItem('jwtToken', cookieValue);
-
-        console.log(data.data, cookieHeader)
+    if(data?.data){
+        console.log(data.data)
+        loginContext({username: data.data.user})
         navigate('/')
     }
 }, [data, error])
@@ -65,10 +72,10 @@ useEffect(() => {
                                     type="text"
                                     label="Usuario"
                                     register={register}
-                                    value="email"
+                                    value="username"
                                     msgError="Por favor ingrese su nombre de usuario"
-                                    error={!!errors.email}
-                                    helperText={errors.email?.message}
+                                    error={!!errors.username}
+                                    helperText={errors.username?.message}
                                     
                                 />
                                 <CustomInput 

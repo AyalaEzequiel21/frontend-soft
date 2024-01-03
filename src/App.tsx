@@ -9,6 +9,7 @@ import { Payments } from '@/pages/Payments/Payments'
 import { Sales } from '@/pages/Sales/Sales'
 import { Reports } from './pages/Reports/Reports'
 import { Orders } from './pages/Orders/Orders'
+import GlobalContextProvider from './context/GlobalContext'
  
 const router = createHashRouter([
   {
@@ -57,7 +58,9 @@ const router = createHashRouter([
 
 function App() {
   return (
-    <RouterProvider router={router}/>
+    <GlobalContextProvider>
+      <RouterProvider router={router}/>
+    </GlobalContextProvider>
   )
 }
 export default App

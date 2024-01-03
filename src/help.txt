@@ -1,45 +1,41 @@
-import axios, { AxiosError, AxiosResponse } from "axios";
-import { useState, useEffect } from "react";
+import React, { createContext, useState, useEffect } from "react"
 
-interface apiCallProps<T> {
-  method: string;
-  path: string;
-  body?: T | null;
+interface ContextData {
+    results: Record<string, string>
+    setResults: React.Dispatch<React.SetStateAction<Record<string, string>>>
 }
 
-export interface apiResponse<T> {
-  data: AxiosResponse<T> | null;
-  error: AxiosError | null;
-  isLoading: boolean;
+const initialContextData: ContextData = {
+    results: {},
+    setResults: () => {}
 }
 
-export const useApiCallFunction = <T, V>({ method, path, body }: apiCallProps<T>): apiResponse<V> => {
-  const [data, setData] = useState<AxiosResponse | null>(null);
-  const [error, setError] = useState<AxiosError | null>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+export const GlobalContext = createContext<ContextData>(initialContextData)
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setIsLoading(true);
+interface GlobalContextProviderProps {
+    children: React.ReactNode
+}
+const GlobalContextProvider: React.FC<GlobalContextProviderProps> = ({children}) => {
+    const [results, setResults] = useState<Record<string, string>>({})
+    useEffect(()=> {
+        console.log(results);
+    }, [results])
 
-      try {
-        const response = await axios({
-          method: method,
-          baseURL: "http://localhost:4000/praderaAPI",
-          url: path,
-          data: body,
-        });
+    return (
+        <GlobalContext.Provider value={{results, setResults}}>
+            {children}
+        </GlobalContext.Provider>
+    )
+}
 
-        setData(response);
-      } catch (err) {
-        setError(err as AxiosError);
-      } finally {
-        setIsLoading(false);
-      }
-    };
+export default GlobalContextProvider
 
-    fetchData();
-  }, [method, path, body]); // Dependencias actualizadas
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
-  return { data, error, isLoading };
-};
+
+import { useContext } from "react"
+import { GlobalContext } from "./GlobalContext"
+
+export const useGlobalContext = () => {
+    return useContext(GlobalContext)
+}

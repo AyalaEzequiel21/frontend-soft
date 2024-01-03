@@ -5,7 +5,7 @@ import { ERole } from "../enums/ERole";
 
 export const userRegistrationSchema = z.object({
     username: z.string().min(3),
-    email: z.string().email(),
+    // email: z.string().email(),
     password: z.string(),
     role: z.nativeEnum(ERole)
 })
