@@ -1,0 +1,1 @@
+export type DataItemType = Record<string, unknown>

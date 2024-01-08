@@ -6,17 +6,17 @@ interface apiCallProps {
     path: string,
 }
 
-export interface apiResponse<T, V> {
+export interface apiResponse<T, V, E> {
     data: AxiosResponse<V> | null
-    error: AxiosError | null
+    error: AxiosError<E> | null
     isLoading: boolean,
     callApi: (body: T|null) => void
 }
 
-export const UseApiCallFunction = <T, V>({method, path, }: apiCallProps): apiResponse<T, V> => {
+export const UseApiCallFunction = <T, V, E>({method, path, }: apiCallProps): apiResponse<T, V, E> => {
 
-    const [data, setData] = useState<AxiosResponse<V>| null>(null)
-    const [error, setError] = useState<AxiosError| null>(null)
+    const [data, setData] = useState<AxiosResponse<V> | null>(null)
+    const [error, setError] = useState<AxiosError<E> | null>(null)
     const [isLoading, setIsLoading] = useState<boolean>(false)
  
         const callApi = async (body: T|null) => {
@@ -24,14 +24,14 @@ export const UseApiCallFunction = <T, V>({method, path, }: apiCallProps): apiRes
             try {
                 const response = await axios({
                     method: method,
-                    baseURL: "http://localhost:4000/praderaAPI",
+                    baseURL: import.meta.env.VITE_API_URL_LOCAL,
                     url: path,
                     data: body,
                     withCredentials: true 
                 })
                 setData(response)
             } catch(err) {
-                setError(err as AxiosError)
+                setError(err as AxiosError<E>)
             }finally {
                 setIsLoading(false)
             }

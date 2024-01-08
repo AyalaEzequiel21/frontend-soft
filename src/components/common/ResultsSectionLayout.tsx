@@ -2,15 +2,15 @@ import { Box, Typography, Divider } from "@mui/material"
 import { TableResultLayout } from "../tableResultLayout/TableResultsLayout"
 import { TableToolbar } from "../tableToolbar/TableTollbar"
 import { TableHeadItemType } from "@/utilities/types/TableHeadItemType"
-import { TableDataRowType } from "@/utilities/types/TableDataRowType"
-
-interface resultsSectionLayout {
+import { DataItemType } from "@/utilities/types/DataItemType"
+    
+interface resultsSectionLayout<T  extends DataItemType> {
     title: string,
     headItems: TableHeadItemType[],
-    dataRows: TableDataRowType[]
+    dataResults: T[]
 }
 
-export const ResultsSectionLayout: React.FC<resultsSectionLayout> = ({title, headItems, dataRows}) => {
+export const ResultsSectionLayout = <T extends DataItemType>({title, headItems, dataResults} : resultsSectionLayout<T>): JSX.Element => {
     return (
         <Box 
             display='flex'
@@ -26,7 +26,7 @@ export const ResultsSectionLayout: React.FC<resultsSectionLayout> = ({title, hea
             <Divider sx={{maxWidth: '1100px'}}/>
             <TableToolbar />
             <Divider sx={{maxWidth: '1100px'}}/>
-            <TableResultLayout itemsHead={headItems} dataRows={dataRows}/>
+            <TableResultLayout<T> itemsHead={headItems} dataRows={dataResults}/>
         </Box>
     )
 }

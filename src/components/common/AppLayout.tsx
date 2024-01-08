@@ -48,7 +48,7 @@ export const AppLayout: React.FC<object> = () => {
                 >
                     <SideBar isOpen={isOpenSideBar} onClose={handleCloseSideBar}/>
                 </Grid>
-                <Grid container md={9} lg={9.5} xl={10} alignItems='center' justifyContent='center' sx={{ maxHeight: '100%', p: 2 }}> 
+                <Grid item md={9} lg={9.5} xl={10} alignItems='center' justifyContent='center' sx={{ maxHeight: '100%', p: 2, width: {xs: '100%'}, maxWidth: '1400px'}}> 
                     <Outlet />
                  </Grid>
             </Grid>

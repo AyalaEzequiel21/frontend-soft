@@ -9,8 +9,9 @@ import { Payments } from '@/pages/Payments/Payments'
 import { Sales } from '@/pages/Sales/Sales'
 import { Reports } from './pages/Reports/Reports'
 import { Orders } from './pages/Orders/Orders'
-import GlobalContextProvider from './context/GlobalContext'
- 
+import {GlobalContextProvider} from './context/GlobalContext'
+
+
 const router = createHashRouter([
   {
     path: '/',

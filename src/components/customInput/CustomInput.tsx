@@ -26,6 +26,7 @@ export const CustomInput = <T extends FieldValues>({
         <TextField
             fullWidth 
             type={type}
+            autoComplete="current-password"
             label={label}
             color="secondary"
             {...register(value, {
@@ -33,6 +34,7 @@ export const CustomInput = <T extends FieldValues>({
             })}
             error={error}
             helperText={helperText} 
+            
         />
     )
 }

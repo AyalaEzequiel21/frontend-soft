@@ -17,10 +17,10 @@ export type ClientRegister = z.infer<typeof clientRegistrationSchema>
 
 export const clientMongoSchema = clientRegistrationSchema.extend({
     _id: z.string(),
-    register_date: z.string().optional(),
-    balance: z.number().optional(),
-    sales: z.array(z.string()).optional(),
-    payments: z.array(z.string()).optional(),
+    register_date: z.string(),
+    balance: z.number(),
+    sales: z.array(z.string()),
+    payments: z.array(z.string()),
     is_active: z.boolean()
 })
 

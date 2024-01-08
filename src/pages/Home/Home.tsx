@@ -2,9 +2,11 @@
 import { EMethodsApi } from "@/enums/EMethodsApi"
 import { ClientMongo } from "@/schemas/clientSchemas"
 import { UseApiCallFunction } from "@/utilities/hooks/UseApiCallFunction"
+import { UseGlobalContext } from "@/utilities/hooks/UseGlobalContext"
 import { Button, Typography, Box } from "@mui/material"
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { useNavigate } from 'react-router-dom'
+import { ResponseError } from "../Login/Login"
 
 interface homeProps {
 }
@@ -15,30 +17,21 @@ interface ResponseClients {
 }
 
 export const Home: React.FC<homeProps> = () => {
-    
-    const [cookie, setCookie] = useState<string>()
 
-    const { data, error, isLoading, callApi } = UseApiCallFunction<null, ResponseClients>({
+    const {contextUser} = UseGlobalContext()
+    
+    const { data, error, callApi } = UseApiCallFunction<null, ResponseClients, ResponseError>({
         method: EMethodsApi.GET,
         path: '/clients'
     })
     const onClick = () => {
         callApi(null)
-        setCookie(document.cookie)
     }
     useEffect(()=> {
-        // const jwtToken = document.cookie.replace(
-        //     /(?:(?:^|.*;\s*)jwt\s*=\s*([^;]*).*$)|^.*$/,
-        //     "$1"
-        //   );
-      
-        //   if (!jwtToken) {
-        //     // No se encontró un token, redirigir al login
-        //     navigate("/login");
-        //   }
-        console.log(cookie);
-        
-    }, [cookie])
+        if(contextUser === null){
+            navigate('/login')
+        }
+    }, [contextUser ])
 
     useEffect(()=> {
         console.log(data, error);

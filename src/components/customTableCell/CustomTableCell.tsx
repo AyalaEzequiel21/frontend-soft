@@ -1,4 +1,5 @@
-import { TableCell, useTheme } from "@mui/material"
+import { TableCell } from "@mui/material"
+import { useTheme } from "@mui/material/styles"
 
 interface customTableCellProps {
     children: React.ReactNode,

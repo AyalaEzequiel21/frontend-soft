@@ -6,8 +6,6 @@ import { CssBaseline } from '@mui/material'
 import { ThemeConfig } from './config/theme.config.tsx'
 
 
-
-
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <ThemeConfig>

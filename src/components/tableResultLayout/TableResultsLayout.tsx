@@ -1,16 +1,17 @@
-import { Paper, Table, TableContainer, TableHead, TableRow, TableBody, useTheme } from "@mui/material"
+import { Paper, Table, TableContainer, TableHead, TableRow, TableBody } from "@mui/material"
 import { sizePitcher } from "@/utilities/utilityFunction/checkMediaQuery"
-import { TableHeadItemType } from "@/utilities/types/TableHeadItemType"
 import { CustomTableCell } from "../customTableCell/CustomTableCell"
-import { TableDataRowType } from "@/utilities/types/TableDataRowType"
 import { CustomRowBody } from "../customRowBody/CustomRowBody"
+import { useTheme } from "@mui/material/styles"
+import { TableHeadItemType } from "@/utilities/types/TableHeadItemType"
+import { DataItemType } from "@/utilities/types/DataItemType"
 
-interface tableResultLayoutProps<T extends TableDataRowType> {
+interface tableResultLayoutProps<T  extends DataItemType> {
     itemsHead: TableHeadItemType[],
     dataRows:  T[]
 }
 
-export const TableResultLayout = <T extends TableDataRowType>({itemsHead, dataRows}: tableResultLayoutProps<T>): JSX.Element => {
+export const TableResultLayout = <T  extends DataItemType>({itemsHead, dataRows}: tableResultLayoutProps<T>): JSX.Element => {
 
     const {palette} = useTheme()
 
@@ -21,16 +22,16 @@ export const TableResultLayout = <T extends TableDataRowType>({itemsHead, dataRo
             <Table stickyHeader={true}>
                 <TableHead sx={{backgroundColor: palette.primary.light}}>
                     <TableRow>
-                        {itemsHead.map(itemHead => 
+                        {itemsHead.map((itemHead, index) => 
                             sizePitcher(itemHead.starting) && 
-                                <CustomTableCell isHead={true} colSpan={itemHead.colSpan}>
+                                <CustomTableCell isHead={true} colSpan={itemHead.colSpan} key={index}>
                                     {itemHead.label}
                                 </CustomTableCell>)}
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {dataRows.map(row => (
-                        <CustomRowBody itemsHead={itemsHead} data={row}/>
+                    {dataRows.map((row, index) => (
+                        <CustomRowBody<T> itemsHead={itemsHead} data={row} key={index}/>
                     ))}
                 </TableBody>
             </Table>

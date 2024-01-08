@@ -1,5 +1,4 @@
-// import { ClientType } from "@/utilities/types/ClientType";
-import { TableDataRowType } from "@/utilities/types/TableDataRowType";
+
 
 export const clientHeaderItems = [
     {
@@ -7,35 +6,35 @@ export const clientHeaderItems = [
         colSpan: 1,
         starting: 'medium',
         isPrincipal: false,
-        key: 'category' as keyof TableDataRowType
+        key: 'category'
     },
     {
         label: 'Cliente',
         colSpan: 1,
         starting: '',
         isPrincipal: true,
-        key: 'nombre' as keyof TableDataRowType
+        key: 'fullname'
     },
     {
-        label: 'Balance $',
+        label: 'Balance',
         colSpan: 1,
         starting: '',
         isPrincipal: false,
-        key: 'balance' as keyof TableDataRowType
+        key: 'balance'
     },
     {
         label: 'Telefono',
         colSpan: 1,
         starting: 'small',
         isPrincipal: false,
-        key: 'telefono' as keyof TableDataRowType
+        key: 'phone' 
     },
     {
         label: 'Reparto',
         colSpan: 1,
         starting: 'large',
         isPrincipal: false,
-        key: 'in_delivery' as keyof TableDataRowType
+        key: 'in_delivery' 
     },
     {
         label: '',

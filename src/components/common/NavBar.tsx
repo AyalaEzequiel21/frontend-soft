@@ -3,6 +3,7 @@ import MenuIcon from '@mui/icons-material/Menu'
 import LogoutIcon from '@mui/icons-material/Logout'
 import { CheckMediumScreen } from '@/utilities/utilityFunction/checkMediaQuery'
 import { FlexBetweenBox } from '../utilities/FlexBoxTypes'
+import { UseGlobalContext } from '@/utilities/hooks/UseGlobalContext'
 
 interface navBarProp {
     onMenuClick: () => void
@@ -10,6 +11,7 @@ interface navBarProp {
 
 export const NavBar: React.FC<navBarProp> = ({onMenuClick}) => {
     const isMediumSize = CheckMediumScreen()
+    const {contextUser, logoutContext} = UseGlobalContext()
     return (
         <AppBar position='fixed'>
             <Toolbar>
@@ -19,8 +21,8 @@ export const NavBar: React.FC<navBarProp> = ({onMenuClick}) => {
                         <Typography variant='h3'>Business Admin</Typography>    
                     </FlexBetweenBox>
                     <FlexBetweenBox>
-                    <Typography variant='h3'>User</Typography>    
-                     <IconButton color='info' sx={{ml: '10px'}}>
+                    <Typography variant='h3'>{contextUser?.username != null ? contextUser.username : '...'}</Typography>    
+                     <IconButton color='info' onClick={() => logoutContext()} sx={{ml: '10px'}}>
                         <LogoutIcon />
                     </IconButton>
                     </FlexBetweenBox>

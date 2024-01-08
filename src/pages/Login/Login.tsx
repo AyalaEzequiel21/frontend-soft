@@ -14,7 +14,12 @@ interface loginProps {}
 export type ResponseLogin = {
     ok: boolean,
     message: string,
-    user: string
+    data: {username: string, role: string}
+}
+
+export type ResponseError = {
+    ok: boolean,
+    message: string,
 }
 
 type FormValues = {
@@ -29,9 +34,9 @@ export const Login: React.FC<loginProps> = () => {
 
     const {register, handleSubmit, formState: {errors}} = useForm<FormValues>()
 
-    const {contextUser, loginContext} = UseGlobalContext()
+    const {loginContext} = UseGlobalContext()
 
-    const { data, error, isLoading, callApi } = UseApiCallFunction<FormValues, ResponseLogin>({
+    const { data, error, isLoading, callApi } = UseApiCallFunction<FormValues, ResponseLogin, ResponseError>({
         method: EMethodsApi.POST,
         path: '/auth/login'
     })
@@ -40,13 +45,15 @@ export const Login: React.FC<loginProps> = () => {
         callApi(dataForm)
     }
 
-useEffect(() => {
-    if(data?.data){
-        console.log(data.data)
-        loginContext({username: data.data.user})
-        navigate('/')
-    }
-}, [data, error])
+    useEffect(() => {
+        if(data?.data){
+            loginContext({username: data.data.data.username, role: data.data.data.role})
+            navigate('/')
+        }
+        if(error){
+            console.log(error)
+        }
+    }, [data, error])
 
     return (
         <Container maxWidth={false} sx={{backgroundColor: palette.primary.light}}>
@@ -90,12 +97,11 @@ useEffect(() => {
                                 <Button fullWidth type="submit" variant="contained" color="secondary" disabled={isLoading}><Typography variant="h3">{isLoading? (<CircularProgress color="inherit" size={30}/>) : "Iniciar"}</Typography></Button>
                                 {error && 
                                     <Box>
-                                        <Typography>Ha ocurrido un error durante la conexion</Typography>
+                                        <Typography sx={{color: 'red'}}>{error.response?.data?.message}</Typography>
                                     </Box>}
                             </Stack>
                         </Box>
                     </Paper>
-                        <Button variant="contained" sx={{mt:5, backgroundColor: palette.secondary.dark}} onClick={() => navigate('/')}>Home</Button>
                 </Grid>
             </Grid>
         </Container>
