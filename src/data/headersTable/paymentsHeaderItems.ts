@@ -1,4 +1,3 @@
-import { TableDataRowType } from "@/utilities/types/TableDataRowType";
 
 export const paymentsHeaderItem = [
     {
@@ -6,28 +5,28 @@ export const paymentsHeaderItem = [
         colSpan: 1,
         starting: 'small',
         isPrincipal: false,
-        key: 'payment_date' as keyof TableDataRowType
+        key: 'payment_date'
     },
     {
         label: 'Cliente',
         colSpan: 1,
         starting: '',
         isPrincipal: true,
-        key: 'clientName' as keyof TableDataRowType
+        key: 'clientName'
     },
     {
         label: 'Monto',
         colSpan: 1,
         starting: '',
         isPrincipal: false,
-        key: 'amount' as keyof TableDataRowType
+        key: 'amount'
     },
     {
         label: 'Metodo',
         colSpan: 1,
         starting: 'small',
         isPrincipal: false,
-        key: 'payment_method' as keyof TableDataRowType
+        key: 'payment_method'
     },
     {
         label: '',

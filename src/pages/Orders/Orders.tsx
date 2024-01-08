@@ -1,9 +1,43 @@
+import { ErrorComponent } from "@/components/common/ErrorComponent"
 import { ResultsSectionLayout } from "@/components/common/ResultsSectionLayout"
 import { ordersHeaderItem } from "@/data/headersTable/ordersHeaderItems"
-import { ordersList } from "@/data/sectionsData/ordersList"
+import { EMethodsApi } from "@/enums/EMethodsApi"
+import { OrderListMongo } from "@/schemas/orderListSchema"
+import { UseApiCallFunction } from "@/utilities/hooks/UseApiCallFunction"
+import { ResponseAPI } from "@/utilities/interfaces/ResponseAPI"
+import { ResponseError } from "@/utilities/types/ResponseErrorApi"
+import { CircularProgress } from "@mui/material"
+import { useEffect, useState } from "react"
 
 interface ordersProps {}
 
 export const Orders: React.FC<ordersProps> = () => {
-    return <ResultsSectionLayout title="Ordenes de venta" headItems={ordersHeaderItem} dataRows={ordersList}/>
+
+    const {data, isLoading, error, callApi} = UseApiCallFunction<null, ResponseAPI<OrderListMongo>, ResponseError>({
+        method: EMethodsApi.GET,
+        path: '/ordersList'
+    })
+
+    const [dataResults, setDataResults] = useState<OrderListMongo[]>([])
+
+    useEffect(() => {
+        callApi(null)
+    }, [])
+
+    useEffect(() => {
+        console.log(data?.data.data);
+        
+        if(data !== null)
+        setDataResults(data.data.data)
+    }, [data])
+
+    return (
+        isLoading ?
+        (<CircularProgress color="inherit" size={30}/>)
+        : 
+        error ?
+        (<ErrorComponent error={error}/>)
+        :
+        (<ResultsSectionLayout title="Ordenes de venta" headItems={ordersHeaderItem} dataResults={dataResults}/>)
+    )
 }

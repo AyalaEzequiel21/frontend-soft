@@ -8,6 +8,7 @@ import { EMethodsApi } from "@/enums/EMethodsApi";
 import { UseApiCallFunction } from "@/utilities/hooks/UseApiCallFunction";
 import { useTheme } from "@mui/material/styles";
 import { UseGlobalContext } from "@/utilities/hooks/UseGlobalContext";
+import { ResponseError } from "@/utilities/types/ResponseErrorApi";
 
 interface loginProps {}
 
@@ -17,10 +18,6 @@ export type ResponseLogin = {
     data: {username: string, role: string}
 }
 
-export type ResponseError = {
-    ok: boolean,
-    message: string,
-}
 
 type FormValues = {
     username: string,

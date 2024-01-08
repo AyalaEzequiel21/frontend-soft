@@ -1,4 +1,3 @@
-import { TableDataRowType } from "@/utilities/types/TableDataRowType";
 
 export const ordersHeaderItem = [
     {
@@ -6,7 +5,7 @@ export const ordersHeaderItem = [
         colSpan: 1,
         starting: '',
         isPrincipal: false,
-        key: 'order_date' as keyof TableDataRowType
+        key: 'order_date' 
     },
     // {
     //     label: 'Ventas',
@@ -20,7 +19,7 @@ export const ordersHeaderItem = [
         colSpan: 1,
         starting: '',
         isPrincipal: true,
-        key: 'order_status' as keyof TableDataRowType
+        key: 'order_status' 
     },
     {
         label: '',

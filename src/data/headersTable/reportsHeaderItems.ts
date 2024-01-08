@@ -1,4 +1,3 @@
-import { TableDataRowType } from "@/utilities/types/TableDataRowType";
 
 export const reportsHeaderItem = [
     {
@@ -6,14 +5,14 @@ export const reportsHeaderItem = [
         colSpan: 1,
         starting: '',
         isPrincipal: false,
-        key: 'report_date' as keyof TableDataRowType
+        key: 'report_date' 
     },
     {
         label: 'Estado',
         colSpan: 1,
         starting: '',
         isPrincipal: true,
-        key: 'report_status' as keyof TableDataRowType
+        key: 'report_status'
     },
     // {
     //     label: 'Total',
