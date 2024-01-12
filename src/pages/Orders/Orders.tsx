@@ -38,6 +38,6 @@ export const Orders: React.FC<ordersProps> = () => {
         error ?
         (<ErrorComponent error={error}/>)
         :
-        (<ResultsSectionLayout title="Ordenes de venta" headItems={ordersHeaderItem} dataResults={dataResults}/>)
+        (<ResultsSectionLayout title="Listas de venta" headItems={ordersHeaderItem} dataResults={dataResults}/>)
     )
 }

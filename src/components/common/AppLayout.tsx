@@ -1,15 +1,21 @@
 import { Box, Grid } from '@mui/material'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { NavBar } from './NavBar'
 import { Footer } from './Footer'
-import { Outlet } from 'react-router-dom'
+import { Outlet, useNavigate } from 'react-router-dom'
 import { SideBar } from './SideBar'
+import { UseGlobalContext } from '@/utilities/hooks/UseGlobalContext'
 
 
 
 export const AppLayout: React.FC<object> = () => {
 
     const [isOpenSideBar, setIsOpenSideBar] = useState(false)
+
+    const {contextUser} = UseGlobalContext()
+
+    const navigate = useNavigate()
+
 
     const handleOpenSideBar = () => {
         setIsOpenSideBar(true)
@@ -18,6 +24,12 @@ export const AppLayout: React.FC<object> = () => {
     const handleCloseSideBar = () => {
         setIsOpenSideBar(false)
     }
+
+    useEffect(()=> {
+        if(contextUser === null){
+            navigate('/login')
+        }
+    }, [contextUser])
 
     return (
         <Box 

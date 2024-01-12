@@ -17,7 +17,7 @@ export const salesHeaderItem = [
     {
         label: 'Total',
         colSpan: 1,
-        starting: '',
+        starting: 'small',
         isPrincipal: false,
         key: 'totalSale'
     },
