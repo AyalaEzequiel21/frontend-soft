@@ -1,12 +1,14 @@
 import { RouterProvider } from 'react-router-dom'
-import {GlobalContextProvider} from './context/GlobalContext'
 import { routerHash } from './config/RouterHash'
+// import { UserProvider } from './context/UserContext'
 
 function App() {
+  
   return (
-    <GlobalContextProvider>
-      <RouterProvider router={routerHash}/>
-    </GlobalContextProvider>
+    <>
+        <RouterProvider router={routerHash}/>
+    </>
   )
+  
 }
 export default App

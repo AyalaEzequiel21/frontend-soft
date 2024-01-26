@@ -12,9 +12,9 @@ import { Orders } from '@/pages/Orders/Orders'
 
 export const routerHash = createHashRouter([
     {
-        path: '/',
-    element: <AppLayout/>,
-    children: [
+      path: '/',
+      element: <AppLayout/>,
+      children: [
       {
         path: '',
         element: <Home />

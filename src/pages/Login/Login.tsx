@@ -7,15 +7,16 @@ import { CustomInput } from "@/components/customInput/CustomInput";
 import { EMethodsApi } from "@/enums/EMethodsApi";
 import { UseApiCallFunction } from "@/utilities/hooks/UseApiCallFunction";
 import { useTheme } from "@mui/material/styles";
-import { UseGlobalContext } from "@/utilities/hooks/UseGlobalContext";
 import { ResponseError } from "@/utilities/types/ResponseErrorApi";
+import { jwtDecode } from 'jwt-decode';
+import { UseAuth } from "@/utilities/hooks/UseAuth";
 
 interface loginProps {}
 
 export type ResponseLogin = {
     ok: boolean,
     message: string,
-    data: {username: string, role: string}
+    token: string
 }
 
 
@@ -31,7 +32,9 @@ export const Login: React.FC<loginProps> = () => {
 
     const {register, handleSubmit, formState: {errors}} = useForm<FormValues>()
 
-    const {loginContext} = UseGlobalContext()
+    // const {loginContext} = UseGlobalContext()
+    // const { loginLocalUser} = UseLocalStorage()
+    const {login} = UseAuth()
 
     const { data, error, isLoading, callApi } = UseApiCallFunction<FormValues, ResponseLogin, ResponseError>({
         method: EMethodsApi.POST,
@@ -43,14 +46,16 @@ export const Login: React.FC<loginProps> = () => {
     }
 
     useEffect(() => {
-        if(data?.data){
-            loginContext({username: data.data.data.username, role: data.data.data.role})
+        if(data !== null){
+            const token: string = data?.data?.token
+            const decodedToken = jwtDecode<{sub: string, role: string}>(token)
+            login({username: decodedToken.sub, role: decodedToken.role})
             navigate('/')
         }
         if(error){
             console.log(error)
         }
-    }, [data, error])
+    }, [data, error, login, navigate])
 
     return (
         <Container maxWidth={false} sx={{backgroundColor: palette.primary.light}}>
