@@ -3,6 +3,7 @@ import { TableResultLayout } from "../tableResultLayout/TableResultsLayout"
 import { TableToolbar } from "../tableToolbar/TableTollbar"
 import { TableHeadItemType } from "@/utilities/types/TableHeadItemType"
 import { DataItemType } from "@/utilities/types/DataItemType"
+import { NotFoundResults } from "./NotFoundResults"
     
 interface resultsSectionLayout<T  extends DataItemType> {
     title: string,
@@ -26,7 +27,11 @@ export const ResultsSectionLayout = <T extends DataItemType>({title, headItems, 
             <Divider sx={{maxWidth: '1100px'}}/>
             <TableToolbar />
             <Divider sx={{maxWidth: '1100px'}}/>
-            <TableResultLayout<T> itemsHead={headItems} dataRows={dataResults}/>
+            {dataResults.length === 0 ?
+                <NotFoundResults/>
+            :
+                <TableResultLayout<T> itemsHead={headItems} dataRows={dataResults}/>
+            }
         </Box>
     )
 }

@@ -3,6 +3,7 @@ import { createContext, useEffect, useState } from "react";
 
 interface AuthContextData {
     userLoged: UserDataContext|null
+    isAuthenticated: boolean
     login: (userData: UserDataContext) => void
     logout: () => void
 }
@@ -13,12 +14,14 @@ interface providerProps {
 
 export const AuthContext = createContext<AuthContextData>({
     userLoged: null,
+    isAuthenticated: false,
     login: ()=> {},
     logout: ()=> {}
 })
 
 export const AuthProvider: React.FC<providerProps> = ({children}) => {
     const [userLoged, setUserLoged] = useState<UserDataContext|null>(null)
+    const isAuthenticated = !!userLoged
 
     const login = (userData: UserDataContext) => {
         localStorage.setItem('username', userData.username)
@@ -46,7 +49,7 @@ export const AuthProvider: React.FC<providerProps> = ({children}) => {
     }, [userLoged])
 
     return(
-        <AuthContext.Provider value={{userLoged, login, logout}}>
+        <AuthContext.Provider value={{userLoged, isAuthenticated, login, logout}}>
             {children}
         </AuthContext.Provider>
     )

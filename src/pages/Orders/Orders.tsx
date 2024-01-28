@@ -24,9 +24,7 @@ export const Orders: React.FC<ordersProps> = () => {
         callApi(null)
     }, [])
 
-    useEffect(() => {
-        console.log(data?.data.data);
-        
+    useEffect(() => {        
         if(data !== null)
         setDataResults(data.data.data)
     }, [data])
@@ -37,7 +35,7 @@ export const Orders: React.FC<ordersProps> = () => {
         : 
         error ?
         (<ErrorComponent error={error}/>)
-        :
+        : 
         (<ResultsSectionLayout title="Listas de venta" headItems={ordersHeaderItem} dataResults={dataResults}/>)
     )
 }

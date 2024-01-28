@@ -9,8 +9,9 @@ import { UseAuth } from '@/utilities/hooks/UseAuth'
 
 export const AppLayout: React.FC<object> = () => {
     const [isOpenSideBar, setIsOpenSideBar] = useState(false)
-    const {login} = UseAuth()
+    const {login, isAuthenticated} = UseAuth()
     const navigate = useNavigate()
+    
     const handleOpenSideBar = () => {
         setIsOpenSideBar(true)
     }
@@ -19,14 +20,16 @@ export const AppLayout: React.FC<object> = () => {
     }
 
     useEffect(()=> {
-        const userLoged = getStoredUser()
-        if(userLoged){
-            login(userLoged)
-        }else{
-            navigate('/login')
+        if(!isAuthenticated){
+            const userLoged = getStoredUser()
+            if(userLoged){
+                login(userLoged)
+            }else{
+                navigate('/login')
+            }
         }
-    }, [login, navigate])
-// 699729
+    }, [isAuthenticated, login, navigate])
+
     return (
             <Box 
                 sx={{

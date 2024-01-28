@@ -35,7 +35,7 @@ export const Reports: React.FC<reportsProps> = () => {
         : 
         error ?
         (<ErrorComponent error={error}/>)
-        :
+        : 
         (<ResultsSectionLayout title="Reportes de pago" headItems={reportsHeaderItem} dataResults={dataResults}/>)
     )
 }
