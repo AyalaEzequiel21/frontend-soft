@@ -8,6 +8,8 @@ import { CircularProgress } from "@mui/material"
 import { ErrorComponent } from "@/components/common/ErrorComponent"
 import { ResponseError } from "@/utilities/types/ResponseErrorApi"
 import { ResponseAPI } from "@/utilities/interfaces/ResponseAPI"
+import { PermittedRolesAction } from "@/utilities/types/PermittedRolesAction"
+import { ERole } from "@/enums/ERole"
 
 interface clientesProps {}
 
@@ -19,6 +21,11 @@ export const Clients: React.FC<clientesProps> = () => {
     })
 
     const [dataResults, setDataResults] = useState<ClientMongo[]>([])
+    
+    const roles: PermittedRolesAction = {
+       toolbarRoles: [ERole.Admin, ERole.Biller],
+       rowRoles: [ERole.Admin, ERole.Biller] 
+    }
 
     useEffect(() => {
         callApi(null)
@@ -36,7 +43,7 @@ export const Clients: React.FC<clientesProps> = () => {
         :
         error ? (<ErrorComponent error={error}/>)
         :
-        (<ResultsSectionLayout<ClientMongo> title="Clientes" headItems={clientHeaderItems} dataResults={dataResults}/>)
+        (<ResultsSectionLayout<ClientMongo> title="Clientes" headItems={clientHeaderItems} dataResults={dataResults} permittedRoles={roles} />)
     )
     
 }

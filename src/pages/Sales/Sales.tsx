@@ -8,6 +8,8 @@ import { ResponseError } from "@/utilities/types/ResponseErrorApi"
 import { useEffect, useState } from "react"
 import { CircularProgress } from "@mui/material"
 import { ErrorComponent } from "@/components/common/ErrorComponent"
+import { PermittedRolesAction } from "@/utilities/types/PermittedRolesAction"
+import { ERole } from "@/enums/ERole"
 
 
 interface salesProps {}
@@ -20,6 +22,10 @@ export const Sales: React.FC<salesProps> = () => {
     })
 
     const [dataResults, setDataResults] = useState<SaleMongo[]>([])
+    const roles: PermittedRolesAction = {
+        toolbarRoles: [ERole.Admin, ERole.Biller],
+        rowRoles: [ERole.Admin, ERole.Biller] 
+     }
 
     useEffect(() => {
         callApi(null)
@@ -38,6 +44,6 @@ export const Sales: React.FC<salesProps> = () => {
         error ?
         (<ErrorComponent error={error}/>)
         : 
-        (<ResultsSectionLayout title="Ventas" headItems={salesHeaderItem} dataResults={dataResults}/>)
+        (<ResultsSectionLayout title="Ventas" headItems={salesHeaderItem} dataResults={dataResults} permittedRoles={roles}/>)
     )
 }

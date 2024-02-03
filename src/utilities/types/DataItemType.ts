@@ -1,1 +1,4 @@
-export type DataItemType = Record<string, unknown>
+export type DataItemType = {
+    _id: string,
+    [key: string]: unknown
+}

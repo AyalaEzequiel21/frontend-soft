@@ -2,9 +2,11 @@ import { ErrorComponent } from "@/components/common/ErrorComponent"
 import { ResultsSectionLayout } from "@/components/common/ResultsSectionLayout"
 import { paymentsHeaderItem } from "@/data/headersTable/paymentsHeaderItems"
 import { EMethodsApi } from "@/enums/EMethodsApi"
+import { ERole } from "@/enums/ERole"
 import { PaymentMongo } from "@/schemas/paymentSchema"
 import { UseApiCallFunction } from "@/utilities/hooks/UseApiCallFunction"
 import { ResponseAPI } from "@/utilities/interfaces/ResponseAPI"
+import { PermittedRolesAction } from "@/utilities/types/PermittedRolesAction"
 import { ResponseError } from "@/utilities/types/ResponseErrorApi"
 import { CircularProgress } from "@mui/material"
 import { useEffect, useState } from "react"
@@ -19,6 +21,10 @@ export const Payments: React.FC<paymentsProps> = () => {
     })
 
     const [dataResults, setDataResults] = useState<PaymentMongo[]>([])
+    const roles: PermittedRolesAction = {
+        toolbarRoles: [ERole.Admin, ERole.Biller],
+        rowRoles: [ERole.Admin, ERole.Biller] 
+     }
 
     useEffect(() => {
         callApi(null)
@@ -36,6 +42,6 @@ export const Payments: React.FC<paymentsProps> = () => {
         error ?
         (<ErrorComponent error={error}/>)
         : 
-        (<ResultsSectionLayout title="Pagos" headItems={paymentsHeaderItem} dataResults={dataResults}/>)
+        (<ResultsSectionLayout title="Pagos" headItems={paymentsHeaderItem} dataResults={dataResults} permittedRoles={roles}/>)
     )
 }

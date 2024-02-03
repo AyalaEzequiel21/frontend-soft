@@ -5,13 +5,16 @@ import { CustomRowBody } from "../customRowBody/CustomRowBody"
 import { useTheme } from "@mui/material/styles"
 import { TableHeadItemType } from "@/utilities/types/TableHeadItemType"
 import { DataItemType } from "@/utilities/types/DataItemType"
+import { ERole } from "@/enums/ERole"
 
 interface tableResultLayoutProps<T  extends DataItemType> {
     itemsHead: TableHeadItemType[],
-    dataRows:  T[]
+    dataRows:  T[],
+    rowRoles: ERole[],
+    openModal: ()=> void,
 }
 
-export const TableResultLayout = <T  extends DataItemType>({itemsHead, dataRows}: tableResultLayoutProps<T>): JSX.Element => {
+export const TableResultLayout = <T  extends DataItemType>({itemsHead, dataRows, rowRoles, openModal}: tableResultLayoutProps<T>): JSX.Element => {
 
     const {palette} = useTheme()
 
@@ -31,7 +34,7 @@ export const TableResultLayout = <T  extends DataItemType>({itemsHead, dataRows}
                 </TableHead>
                 <TableBody>
                     {dataRows.map((row, index) => (
-                        <CustomRowBody<T> itemsHead={itemsHead} data={row} key={index}/>
+                        <CustomRowBody<T> openModal={openModal} itemsHead={itemsHead} data={row} key={index} rowRoles={rowRoles}/>
                     ))}
                 </TableBody>
             </Table>
