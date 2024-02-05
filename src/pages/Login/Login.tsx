@@ -31,9 +31,6 @@ export const Login: React.FC<loginProps> = () => {
     const {palette} = useTheme()
 
     const {register, handleSubmit, formState: {errors}} = useForm<FormValues>()
-
-    // const {loginContext} = UseGlobalContext()
-    // const { loginLocalUser} = UseLocalStorage()
     const {login} = UseAuth()
 
     const { data, error, isLoading, callApi } = UseApiCallFunction<FormValues, ResponseLogin, ResponseError>({
