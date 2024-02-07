@@ -4,6 +4,7 @@ import { ClientMongo } from "@/schemas/clientSchemas"
 import { UseApiCallFunction } from "@/utilities/hooks/UseApiCallFunction"
 import { ResponseAPI } from "@/utilities/interfaces/ResponseAPI"
 import { ResponseError } from "@/utilities/types/ResponseErrorApi"
+import { Button } from "@mui/material"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 
@@ -20,24 +21,25 @@ export const ClientDetails: React.FC<clientDetailsProps> = () => {
         path: `/clients/client/${id.clientId}`
     })
 
-    const [dataResults, setDataResults] = useState<ClientMongo>()
+    const [dataResults, setDataResults] = useState<ClientMongo[]>([])
 
     useEffect(()=> {
         callApi(null)
-        
     }, [])
 
     useEffect(()=> {
-        if(data){
-            setDataResults(data.data.data)
-            // console.log(data);
-            
+        if( data !== null){
+            setDataResults(data.data.data)                        
         }
     }, [data])
 
+    useEffect(() => {
+        console.log();
+    }, [dataResults])
+
     return (
-        <DetailsLayout title="Client">
-            <></>
+        <DetailsLayout keyWord={'client'} section="Clients">
+            <Button>Click me</Button>
         </DetailsLayout>
     )
 }

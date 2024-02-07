@@ -1,25 +1,44 @@
-import { Box, Typography } from "@mui/material"
+import { DeleteForever } from "@mui/icons-material"
+import { Box, IconButton, Typography } from "@mui/material"
 import React from "react"
 
 interface detailsLayoutProps{
     children: React.ReactNode
-    title: string
+    section: string,
+    keyWord: string
 }
 
-export const DetailsLayout: React.FC<detailsLayoutProps> = ({children, title}) => {
+export const DetailsLayout: React.FC<detailsLayoutProps> = ({children, section, keyWord}) => {
     
     return (
         <Box
             sx={{
-                border: '2px solid black',
+                // border: '2px solid black',
                 display: 'flex',
-                justifyContent: 'center',
+                // justifyContent: 'space-around',
                 alignItems: 'center',
+                flexDirection: 'column',
                 height: '100%',
-                width: '100%'
+                width: '100%',
+                maxWidth:'1300px'
             }}
         >
-            <Typography>{title}</Typography>
+            <Typography variant="h4" textAlign={'start'} sx={{width:'100%'}}>{section}</Typography>
+            <Box
+            sx={{
+                // border: '2px solid black',
+                display: 'flex',
+                justifyContent: 'space-between',
+                mt: 1,
+                width: '90%',
+                maxWidth:'1300px'
+            }}
+            
+            >
+                <Typography variant="h3">{keyWord}</Typography>
+                <IconButton sx={{p: 0}}><DeleteForever color="error" fontSize="small"/></IconButton>
+            </Box>
+            {children}
         </Box>
     )
 }
