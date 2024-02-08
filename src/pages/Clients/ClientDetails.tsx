@@ -1,8 +1,9 @@
+import { Card } from "@/components/card/Card"
 import { DetailsLayout } from "@/components/common/DetailsLayout"
 import { EMethodsApi } from "@/enums/EMethodsApi"
 import { ClientMongo } from "@/schemas/clientSchemas"
 import { UseApiCallFunction } from "@/utilities/hooks/UseApiCallFunction"
-import { ResponseAPI } from "@/utilities/interfaces/ResponseAPI"
+import { ResponseOneAPI } from "@/utilities/interfaces/ResponseAPI"
 import { ResponseError } from "@/utilities/types/ResponseErrorApi"
 import { Button } from "@mui/material"
 import { useEffect, useState } from "react"
@@ -16,29 +17,28 @@ export const ClientDetails: React.FC<clientDetailsProps> = () => {
 
     const id = useParams()
 
-    const {data, callApi} = UseApiCallFunction<null, ResponseAPI<ClientMongo>, ResponseError>({
+    const {data, callApi} = UseApiCallFunction<null, ResponseOneAPI<ClientMongo>, ResponseError>({
         method: EMethodsApi.GET,
         path: `/clients/client/${id.clientId}`
     })
 
-    const [dataResults, setDataResults] = useState<ClientMongo[]>([])
+    const [dataResults, setDataResults] = useState<ClientMongo|null>(null)
 
     useEffect(()=> {
         callApi(null)
     }, [])
 
     useEffect(()=> {
-        if( data !== null){
-            setDataResults(data.data.data)                        
+        if( data && data.data.data ){
+            setDataResults(data.data.data)               
         }
     }, [data])
 
-    useEffect(() => {
-        console.log();
-    }, [dataResults])
+
 
     return (
-        <DetailsLayout keyWord={'client'} section="Clients">
+        <DetailsLayout keyWord={ dataResults ? dataResults?.fullname : 'client'} section="Cliente:">
+            <Card subMessage="Total de compras" principalMessage="1.500.000"/>
             <Button>Click me</Button>
         </DetailsLayout>
     )

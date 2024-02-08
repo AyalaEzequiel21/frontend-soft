@@ -13,9 +13,7 @@ export const DetailsLayout: React.FC<detailsLayoutProps> = ({children, section, 
     return (
         <Box
             sx={{
-                // border: '2px solid black',
                 display: 'flex',
-                // justifyContent: 'space-around',
                 alignItems: 'center',
                 flexDirection: 'column',
                 height: '100%',
@@ -26,14 +24,12 @@ export const DetailsLayout: React.FC<detailsLayoutProps> = ({children, section, 
             <Typography variant="h4" textAlign={'start'} sx={{width:'100%'}}>{section}</Typography>
             <Box
             sx={{
-                // border: '2px solid black',
                 display: 'flex',
                 justifyContent: 'space-between',
                 mt: 1,
                 width: '90%',
-                maxWidth:'1300px'
+                maxWidth:'800px'
             }}
-            
             >
                 <Typography variant="h3">{keyWord}</Typography>
                 <IconButton sx={{p: 0}}><DeleteForever color="error" fontSize="small"/></IconButton>

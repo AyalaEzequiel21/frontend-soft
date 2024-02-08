@@ -1,4 +1,9 @@
 export interface ResponseAPI<T> {
     ok: boolean,
-    data: T[]
+    data: T[] 
+}
+
+export interface ResponseOneAPI<T> {
+    ok: boolean,
+    data: T
 }
