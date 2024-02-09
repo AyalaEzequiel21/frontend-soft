@@ -21,7 +21,7 @@ export const DetailsLayout: React.FC<detailsLayoutProps> = ({children, section, 
                 maxWidth:'1300px'
             }}
         >
-            <Typography variant="h4" textAlign={'start'} sx={{width:'100%'}}>{section}</Typography>
+            <Typography variant="h4" textAlign={'start'} sx={{width:'100%'}}>{`Detalle de ${section}`}</Typography>
             <Box
             sx={{
                 display: 'flex',

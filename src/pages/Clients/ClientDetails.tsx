@@ -24,6 +24,10 @@ export const ClientDetails: React.FC<clientDetailsProps> = () => {
 
     const [dataResults, setDataResults] = useState<ClientMongo|null>(null)
 
+    const getTotalSales = (sales) => {
+
+    }
+
     useEffect(()=> {
         callApi(null)
     }, [])
@@ -33,8 +37,6 @@ export const ClientDetails: React.FC<clientDetailsProps> = () => {
             setDataResults(data.data.data)               
         }
     }, [data])
-
-
 
     return (
         <DetailsLayout keyWord={ dataResults ? dataResults?.fullname : 'client'} section="Cliente:">

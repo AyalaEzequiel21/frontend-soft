@@ -13,14 +13,21 @@ export const Card: React.FC<cardProps> = ({subMessage, principalMessage}) => {
     return (
         <Box
             sx={{
-                borderRadius: '20%',
-                backgroundColor: palette.secondary.light,
+                borderRadius: '20px',
+                background: `linear-gradient(to right, ${palette.primary.main}, ${palette.primary.dark})`,                
+                boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+                color: palette.info.main,
                 height: '10rem',
                 width: '15rem',
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
-                justifyContent: 'center'
+                justifyContent: 'center',
+                transition: 'all 0.3s ease-in-out',
+                '&:hover': {
+                    transform: 'scale(1.04)',
+                    background: `linear-gradient(to right, ${palette.primary.dark}, ${palette.primary.main})`
+                  }
             }}
         >
             <Typography variant="h6">{subMessage}</Typography>

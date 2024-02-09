@@ -31,4 +31,3 @@ export const themePalette = {
     F_SIZE_h4: 18,
     F_SIZE_p: 15,
 }
-
