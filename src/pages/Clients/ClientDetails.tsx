@@ -1,11 +1,10 @@
-import { Card } from "@/components/card/Card"
+import { CardsContainerGrid } from "@/components/cards/CardsContainerGrid"
 import { DetailsLayout } from "@/components/common/DetailsLayout"
 import { EMethodsApi } from "@/enums/EMethodsApi"
 import { ClientMongo } from "@/schemas/clientSchemas"
 import { UseApiCallFunction } from "@/utilities/hooks/UseApiCallFunction"
 import { ResponseOneAPI } from "@/utilities/interfaces/ResponseAPI"
 import { ResponseError } from "@/utilities/types/ResponseErrorApi"
-import { Button } from "@mui/material"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 
@@ -24,9 +23,9 @@ export const ClientDetails: React.FC<clientDetailsProps> = () => {
 
     const [dataResults, setDataResults] = useState<ClientMongo|null>(null)
 
-    const getTotalSales = (sales) => {
+    // const getTotalSales = (sales) => {
 
-    }
+    // }
 
     useEffect(()=> {
         callApi(null)
@@ -40,8 +39,7 @@ export const ClientDetails: React.FC<clientDetailsProps> = () => {
 
     return (
         <DetailsLayout keyWord={ dataResults ? dataResults?.fullname : 'client'} section="Cliente:">
-            <Card subMessage="Total de compras" principalMessage="1.500.000"/>
-            <Button>Click me</Button>
+            <CardsContainerGrid />
         </DetailsLayout>
     )
 }

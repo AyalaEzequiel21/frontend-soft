@@ -1,0 +1,1 @@
+export type CardType = 'individual' | 'info' | 'list'
