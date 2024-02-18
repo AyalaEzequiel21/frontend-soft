@@ -1,4 +1,6 @@
 import { CardsContainerGrid } from "@/components/cards/CardsContainerGrid"
+import { InfoCarContent } from "@/components/cards/InfoContentCard"
+import { CardLayout } from "@/components/common/CardLayout"
 import { DetailsLayout } from "@/components/common/DetailsLayout"
 import { EMethodsApi } from "@/enums/EMethodsApi"
 import { ClientMongo } from "@/schemas/clientSchemas"
@@ -23,9 +25,6 @@ export const ClientDetails: React.FC<clientDetailsProps> = () => {
 
     const [dataResults, setDataResults] = useState<ClientMongo|null>(null)
 
-    // const getTotalSales = (sales) => {
-
-    // }
 
     useEffect(()=> {
         callApi(null)
@@ -37,9 +36,19 @@ export const ClientDetails: React.FC<clientDetailsProps> = () => {
         }
     }, [data])
 
+    const cliente = {
+        Telefono: "11-2223-3455",
+        Ingreso: "26/10/2020",
+        Categoria: "cat_2",
+        Reparto: "si",
+      }
+
     return (
-        <DetailsLayout keyWord={ dataResults ? dataResults?.fullname : 'client'} section="Cliente:">
-            <CardsContainerGrid />
+        <DetailsLayout  section="Cliente:">
+            {/* <CardsContainerGrid /> */}
+            <CardLayout>
+                <InfoCarContent title="Horacio" data={cliente}/>
+            </CardLayout>
         </DetailsLayout>
     )
 }
